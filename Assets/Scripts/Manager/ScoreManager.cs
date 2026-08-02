@@ -33,6 +33,11 @@ public class ScoreManager : SingleTon<ScoreManager>
         }
     }
 
+    public void AddScore(long amount)
+    {
+        CurrentScore += amount;
+    }
+
     public void GiveOfflineReward(SaveData saveData, long reward)
     {
         saveData.currentScore += reward;
