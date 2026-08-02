@@ -10,11 +10,6 @@ public class GameManager : SingleTon<GameManager>
         SetGame();
     }
 
-    private void OnApplicationQuit()
-    {
-        SaveData();
-    }
-
     void SetGame()
     {
         saveData = LoadData(); // 데이터를 로드하고
@@ -36,25 +31,18 @@ public class GameManager : SingleTon<GameManager>
 
         if (!string.IsNullOrEmpty(saveData.lastSaveTime))
         {
-            DateTime lastTime = DateTime.Parse(saveData.lastSaveTime);
-            TimeSpan elapsed = DateTime.UtcNow - lastTime;
+            DateTime lastSaveTime = DateTime.Parse(saveData.lastSaveTime, null, System.Globalization.DateTimeStyles.RoundtripKind);
+            TimeSpan elapsed = DateTime.UtcNow - lastSaveTime;
 
-            Debug.Log($"오프라인 시간 : {elapsed.TotalSeconds}초");
+            double offlineSeconds = elapsed.TotalSeconds;
+
+            long reward = (long)(offlineSeconds);
+
+            Debug.Log($"오프라인 시간 : {elapsed.TotalSeconds}초, 리워드 : {reward}");
+            ScoreManager.Instance.GiveOfflineReward(saveData, reward);
         }
 
         return saveData;
 
-    }
-
-
-    public void SaveData()
-    {
-        SaveData saveData = new SaveData()
-        {
-            currentScore = ScoreManager.Instance.CurrentScore,
-            lastSaveTime = DateTime.UtcNow.ToString("O")
-        };
-        
-        SaveManager.Instance.Save(saveData);
     }
 }

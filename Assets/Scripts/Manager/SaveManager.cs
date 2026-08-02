@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using UnityEngine;
 
@@ -11,6 +12,12 @@ public class SaveManager : SingleTon<SaveManager>
 
         savePath = Path.Combine(Application.persistentDataPath,"save.json");
     }
+
+    private void OnApplicationQuit()
+    {
+        SaveData();
+    }
+
     public void Save(SaveData saveData)
     {
         string json = JsonUtility.ToJson(saveData, true);
@@ -18,6 +25,17 @@ public class SaveManager : SingleTon<SaveManager>
         File.WriteAllText(savePath, json);
 
         Debug.Log($"저장완료 {savePath}");
+    }
+
+    public void SaveData()
+    {
+        SaveData saveData = new SaveData()
+        {
+            currentScore = ScoreManager.Instance.CurrentScore,
+            lastSaveTime = DateTime.UtcNow.ToString("O")
+        };
+        
+        Save(saveData);
     }
 
 

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class ScoreManager : SingleTon<ScoreManager>
 {
-    [SerializeField] private int _currentScore = 0;
-    public int CurrentScore
+    [SerializeField] private long _currentScore = 0;
+    public long CurrentScore
     {
         get
         {
@@ -20,8 +20,8 @@ public class ScoreManager : SingleTon<ScoreManager>
         }
     }
 
-    [SerializeField] private int _bestScore = 0;
-    public int BestScore
+    [SerializeField] private long _bestScore = 0;
+    public long BestScore
     {
         get
         {
@@ -31,5 +31,10 @@ public class ScoreManager : SingleTon<ScoreManager>
         {
             _bestScore = value;
         }
+    }
+
+    public void GiveOfflineReward(SaveData saveData, long reward)
+    {
+        saveData.currentScore += reward;
     }
 }
