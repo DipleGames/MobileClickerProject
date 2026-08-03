@@ -23,8 +23,8 @@ public class HUDManager : SingleTon<HUDManager>
 
     private void SetBottomUILayout()
     {
-        _top_Paenl.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height * 0.5f);
-        _bottom_Panel.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height * 0.5f);
+        _top_Paenl.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height * 0.55f);
+        _bottom_Panel.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height * 0.45f);
 
         const float menuRatio = 1f / 6f;
 
@@ -62,5 +62,17 @@ public class HUDManager : SingleTon<HUDManager>
     public void UpdateScoreUI(long currentScore)
     {
         _scoreText.text = currentScore.ToString();
+    }
+
+    /// <summary>
+    /// 버튼입력에 따라 컨텐츠 패널을 보여주는 메서드 
+    /// </summary>
+    public void ShowContentPanelUI(int index)
+    {
+        for(int i=0; i<_contentUIContainer.childCount; i++)
+        {
+            bool active = i == index ? true : false;
+            _contentUIContainer.GetChild(i).gameObject.SetActive(active);
+        }
     }
 }

@@ -1,22 +1,28 @@
 using TMPro;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Rendering;
 
 public class AdditionScoreText : MonoBehaviour, IPoolable
 {
     [SerializeField] private TextMeshProUGUI _text;
     public void SetText(long amount, RectTransform tempRT)
     {
+        CanvasGroup cg = _text.GetComponent<CanvasGroup>();
+        cg.alpha = 1;
+        
         _text.text = $"+{amount}";
 
         RectTransform rt = _text.rectTransform;
-        rt.anchoredPosition = tempRT.anchoredPosition;   // tempRT 위치에서 시작
+        rt.anchoredPosition = tempRT.anchoredPosition + new Vector2(0, 250f);   // tempRT 위치에서 시작
 
-        CanvasGroup cg = _text.GetComponent<CanvasGroup>();
+        cg = _text.GetComponent<CanvasGroup>();
         Sequence seq = DOTween.Sequence();
-        seq.Append(rt.DOAnchorPos(Vector2.up * 200f, 1.5f));
+
+        float randomX = Random.Range(-100f, 100f);
+        seq.Append(rt.DOAnchorPos(rt.anchoredPosition + new Vector2(randomX, 350f), 1.5f).SetRelative());
         seq.Join(cg.DOFade(0f, 2f));
-        seq.OnComplete(() => Destroy(_text.gameObject));
+        seq.OnComplete(() => PoolManager.Instance.Return<AdditionScoreText>(this));
     }
 
     public void OnSpawnFromPool()

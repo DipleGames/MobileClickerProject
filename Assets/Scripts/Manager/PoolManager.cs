@@ -12,7 +12,7 @@ public class PoolManager : SingleTon<PoolManager>
     private readonly Dictionary<Type, object> _pools = new();
     protected override void Awake()
     {
-         base.Awake();
+        base.Awake();
 
         Register(_additionScore_Text_Prefab, _additionScore_Text_Parent, _additionScore_Text_PoolSize);
     }
