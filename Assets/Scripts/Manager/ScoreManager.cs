@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class ScoreManager : SingleTon<ScoreManager>
@@ -36,6 +37,16 @@ public class ScoreManager : SingleTon<ScoreManager>
     public void AddScore(long amount)
     {
         CurrentScore += amount;
+    }
+
+    public void SubtractScore(long amount)
+    {
+        if(CurrentScore - amount < 0)
+        {
+            return;
+        }
+        
+        CurrentScore -= amount;
     }
 
     public void GiveOfflineReward(SaveData saveData, long reward)

@@ -72,6 +72,11 @@ public class HUDManager : SingleTon<HUDManager>
         for(int i=0; i<_contentUIContainer.childCount; i++)
         {
             bool active = i == index ? true : false;
+            if(_contentUIContainer.GetChild(i).gameObject.activeSelf) // 만약 이미 켜져있는 패널인데 또 메뉴버튼입력이 들어오면 꺼버린다.
+            {
+                _contentUIContainer.GetChild(i).gameObject.SetActive(false);
+                continue;
+            }
             _contentUIContainer.GetChild(i).gameObject.SetActive(active);
         }
     }

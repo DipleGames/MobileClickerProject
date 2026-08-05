@@ -20,7 +20,7 @@ public class AdditionScoreText : MonoBehaviour, IPoolable
         Sequence seq = DOTween.Sequence();
 
         float randomX = Random.Range(-100f, 100f);
-        seq.Append(rt.DOAnchorPos(rt.anchoredPosition + new Vector2(randomX, 350f), 1.5f).SetRelative());
+        seq.Append(rt.DOAnchorPos(rt.anchoredPosition + new Vector2(randomX, 200f), 1.5f).SetRelative());
         seq.Join(cg.DOFade(0f, 2f));
         seq.OnComplete(() => PoolManager.Instance.Return<AdditionScoreText>(this));
     }

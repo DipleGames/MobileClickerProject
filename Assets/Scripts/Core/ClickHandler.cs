@@ -7,5 +7,6 @@ public class ClickHandler : MonoBehaviour, IPointerDownHandler
     {
         ScoreManager.Instance.AddScore(1);
         ViewManager.Instance.gameView.ShowAdditionScoreText(1);
+        ViewManager.Instance.gameView.ShowTouchEffect();
     }
 }
