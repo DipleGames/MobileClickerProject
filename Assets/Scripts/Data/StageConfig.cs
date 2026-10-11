@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "StageConfig", menuName = "Stage/StageConfig")]
+[CreateAssetMenu(fileName = "StageConfig", menuName = "Config/StageConfig")]
 public class StageConfig : ScriptableObject
 {
     [Header("Stage Settings")]

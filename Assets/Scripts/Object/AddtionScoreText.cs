@@ -14,7 +14,7 @@ public class AdditionScoreText : MonoBehaviour, IPoolable
         _text.text = $"+{amount}";
 
         RectTransform rt = _text.rectTransform;
-        rt.anchoredPosition = tempRT.anchoredPosition + new Vector2(0, 250f);   // tempRT 위치에서 시작
+        rt.anchoredPosition = tempRT.anchoredPosition + new Vector2(0, -200f);   // tempRT 위치에서 시작
 
         cg = _text.GetComponent<CanvasGroup>();
         Sequence seq = DOTween.Sequence();

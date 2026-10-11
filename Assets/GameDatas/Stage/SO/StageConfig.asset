@@ -16,24 +16,44 @@ MonoBehaviour:
   hpMultiplier: 1.15
   bossHpMultiplier: 10
   normalMonsters:
-  - monsterImg: {fileID: 4723107735738678597, guid: 8904350046b7073479be2cae0dfadcdd, type: 3}
+  - monsterImg: {fileID: 4560143929182428335, guid: 06f711d065365dc4caed222da89bf3ac, type: 3}
     monsterID: 1
-    monsterHP: 5
-    isDie: 0
-  - monsterImg: {fileID: 4723107735738678597, guid: 8904350046b7073479be2cae0dfadcdd, type: 3}
-    monsterID: 2
     monsterHP: 10
     isDie: 0
-  - monsterImg: {fileID: 4723107735738678597, guid: 8904350046b7073479be2cae0dfadcdd, type: 3}
-    monsterID: 3
+  - monsterImg: {fileID: -877870090186221160, guid: ff84e61e3ad0b2b4fa45bc5744ee9e48, type: 3}
+    monsterID: 2
     monsterHP: 20
     isDie: 0
-  - monsterImg: {fileID: 4723107735738678597, guid: 8904350046b7073479be2cae0dfadcdd, type: 3}
+  - monsterImg: {fileID: 1559877361573019309, guid: 62996ff96da55ec4c9bd7bb54f3c2ce4, type: 3}
+    monsterID: 3
+    monsterHP: 30
+    isDie: 0
+  - monsterImg: {fileID: 681549264523918380, guid: 370a0dff39eb24a45af5999412460df8, type: 3}
     monsterID: 4
     monsterHP: 40
     isDie: 0
+  - monsterImg: {fileID: -3779220207937227542, guid: ba47a1e2158eb014e9d71360030f0119, type: 3}
+    monsterID: 5
+    monsterHP: 50
+    isDie: 0
+  - monsterImg: {fileID: 5079202869361769452, guid: e1e2f96750147c4458cbab6fb6893e53, type: 3}
+    monsterID: 6
+    monsterHP: 60
+    isDie: 0
+  - monsterImg: {fileID: -365863344263017501, guid: 77e5209269bb48441922e5aa0a444079, type: 3}
+    monsterID: 7
+    monsterHP: 70
+    isDie: 0
+  - monsterImg: {fileID: 7322203066354337533, guid: ae3ee792a2a54c1418f4648ddd556d9b, type: 3}
+    monsterID: 8
+    monsterHP: 80
+    isDie: 0
   bossMonsters:
-  - monsterImg: {fileID: 4723107735738678597, guid: f5c5fdea45f323340aa3d22a8aca97d9, type: 3}
+  - monsterImg: {fileID: 3811830941311524272, guid: 81aadd64665f7f14aaca604573e12e9e, type: 3}
     monsterID: 101
     monsterHP: 100
+    isDie: 0
+  - monsterImg: {fileID: 950124941352596164, guid: 8d17af679372ea34f9bdb5cb12c0c624, type: 3}
+    monsterID: 101
+    monsterHP: 200
     isDie: 0

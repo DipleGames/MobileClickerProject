@@ -32,6 +32,7 @@ public class SaveManager : SingleTon<SaveManager>
         SaveData saveData = new SaveData()
         {
             currentScore = ScoreManager.Instance.CurrentScore,
+            currentAttackPower = AttackManager.Instance.CurrentAttackPower,
             lastSaveTime = DateTime.UtcNow.ToString("O")
         };
         

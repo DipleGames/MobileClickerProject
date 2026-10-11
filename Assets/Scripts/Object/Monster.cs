@@ -1,20 +1,23 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Monster : MonoBehaviour
 {
     public MonsterData currentMonsterData;
 
+    [SerializeField] private Image _monsterImg;
     [SerializeField] private int _monsterID;
     [SerializeField] private float _monsterHP;
+    [SerializeField] private float _currentmonsterHP;
     [SerializeField] private bool _isDie;
 
-    public float MonsterHP
+    public float CurrentMonsterHP
     {
-        get => _monsterHP;
+        get => _currentmonsterHP;
         set
         {
-            _monsterHP = Mathf.Max(0, value);
-            if(_monsterHP <= 0)
+            _currentmonsterHP = Mathf.Max(0, value);
+            if(_currentmonsterHP <= 0)
             {
                 IsDie = true;
             }
@@ -42,16 +45,20 @@ public class Monster : MonoBehaviour
     {
         currentMonsterData = monsterData;
 
+        _monsterImg.sprite = currentMonsterData.monsterImg;
         _monsterID = currentMonsterData.monsterID;
         _monsterHP = currentMonsterData.monsterHP;
         _isDie = currentMonsterData.isDie;
+
+        CurrentMonsterHP = _monsterHP; // 현재체력 초기화
+        ViewManager.Instance.monsterView.UpdateMonsterHP(_currentmonsterHP, _monsterHP);
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(double damage)
     {
         if (IsDie) return;
 
-        MonsterHP -= damage;
-        Debug.Log($"{MonsterHP}");
+        CurrentMonsterHP -= (float)damage;
+        ViewManager.Instance.monsterView.UpdateMonsterHP(_currentmonsterHP, _monsterHP);
     }
 }

@@ -9,6 +9,7 @@ public class ClickHandler : MonoBehaviour, IPointerDownHandler
         ScoreManager.Instance.AddScore(1);
         ViewManager.Instance.gameView.ShowAdditionScoreText(1);
         ViewManager.Instance.gameView.ShowTouchEffect();
-        StageManager.Instance.CurrentMonster.TakeDamage(3); 
+        StageManager.Instance.CurrentMonster.TakeDamage(DamageCalcurator.CalculateDamage(AttackManager.Instance.CurrentAttackPower, 1f, 1f));
+        Debug.Log($"{DamageCalcurator.CalculateDamage(AttackManager.Instance.CurrentAttackPower, 1f, 1f)}"); 
     }
 }

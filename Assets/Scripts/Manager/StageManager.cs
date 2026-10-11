@@ -27,12 +27,8 @@ public class StageManager : SingleTon<StageManager>
     {
         base.Awake();
 
-        generator = new StageDataGenerator(stageConfig);
-    }
-
-    void Start()
-    {
         OnChangedStage += SpawnMonster;
+        generator = new StageDataGenerator(stageConfig);
     }
 
     // 몬스터가 죽었다면 클리어 판정 (isDie = true = > isClear = true)
