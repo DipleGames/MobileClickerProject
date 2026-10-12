@@ -18,7 +18,7 @@ public class GameManager : SingleTon<GameManager>
         _saveData = LoadData(); // 데이터를 로드하고
         ScoreManager.Instance.CurrentScore = _saveData.currentScore;
         HUDManager.Instance.UpdateScoreUI(_saveData.currentScore);
-        _gameCoroutine = StartCoroutine(StartGameRoutine());
+        _gameCoroutine = StartCoroutine(StartGameRoutine(StageManager.Instance.CurrentStage));
     }
 
     public SaveData LoadData()
@@ -33,6 +33,14 @@ public class GameManager : SingleTon<GameManager>
 
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
 
+        // 스테이지 적용
+        StageManager.Instance.ChangeStage(saveData.currentStage);
+
+        // 어택 레벨 적용
+        AttackManager.Instance.SetAttackLevel(saveData.currentAttackLevel);
+
+
+        // 종료 시간을 불러와 리워드 적용
         if (!string.IsNullOrEmpty(saveData.lastSaveTime))
         {
             DateTime lastSaveTime = DateTime.Parse(saveData.lastSaveTime, null, System.Globalization.DateTimeStyles.RoundtripKind);
@@ -51,9 +59,8 @@ public class GameManager : SingleTon<GameManager>
     }
 
 
-    IEnumerator StartGameRoutine()
+    IEnumerator StartGameRoutine(int stage)
     {
-        int stage = 1;
         Debug.Log("루틴");
         while(true)
         {

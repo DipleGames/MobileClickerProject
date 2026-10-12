@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class ScoreManager : SingleTon<ScoreManager>
 {
-    [SerializeField] private long _currentScore = 0;
-    public long CurrentScore
+    [SerializeField] private double _currentScore = 0;
+    public double CurrentScore
     {
         get
         {
@@ -21,8 +21,8 @@ public class ScoreManager : SingleTon<ScoreManager>
         }
     }
 
-    [SerializeField] private long _bestScore = 0;
-    public long BestScore
+    [SerializeField] private double _bestScore = 0;
+    public double BestScore
     {
         get
         {
@@ -34,19 +34,20 @@ public class ScoreManager : SingleTon<ScoreManager>
         }
     }
 
-    public void AddScore(long amount)
+    public void AddScore(double amount)
     {
         CurrentScore += amount;
     }
 
-    public void SubtractScore(long amount)
+    public bool TrySubtractScore(double amount)
     {
         if(CurrentScore - amount < 0)
         {
-            return;
+            return false;
         }
         
         CurrentScore -= amount;
+        return true;
     }
 
     public void GiveOfflineReward(SaveData saveData, long reward)

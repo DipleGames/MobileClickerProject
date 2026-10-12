@@ -31,8 +31,9 @@ public class SaveManager : SingleTon<SaveManager>
     {
         SaveData saveData = new SaveData()
         {
+            currentStage = StageManager.Instance.CurrentStage,
             currentScore = ScoreManager.Instance.CurrentScore,
-            currentAttackPower = AttackManager.Instance.CurrentAttackPower,
+            currentAttackLevel = AttackManager.Instance.AttackLevel,
             lastSaveTime = DateTime.UtcNow.ToString("O")
         };
         

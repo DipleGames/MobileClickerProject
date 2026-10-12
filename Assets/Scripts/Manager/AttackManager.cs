@@ -3,20 +3,28 @@ using System;
 
 public class AttackManager : SingleTon<AttackManager>
 {
-    [SerializeField] private AttackConfig config;
+    [SerializeField] private AttackConfig _config;
+    [SerializeField] private double _currentAttackPower;
 
     public int AttackLevel { get; private set; } = 1;
+    public AttackConfig AttackConfig => _config;
 
     private double weaponMultiplier = 1.0;
     private double rebirthMultiplier = 1.0;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        OnAttackChanged += ViewManager.Instance.menuView.UpdateAttackLevelUpgradeUI;
+    }
 
     public double CurrentAttackPower
     {
         get
         {
-            double upgradePower = config.baseAttack * Math.Pow(config.attackMultiplier, AttackLevel - 1);
-
-            return upgradePower * weaponMultiplier * rebirthMultiplier;
+            double upgradePower = _config.baseAttack * Math.Pow(_config.attackMultiplier, AttackLevel - 1);
+            _currentAttackPower = upgradePower * weaponMultiplier * rebirthMultiplier;
+            return _currentAttackPower;
         }
     }
 
@@ -25,7 +33,6 @@ public class AttackManager : SingleTon<AttackManager>
     public void UpgradeAttack()
     {
         AttackLevel++;
-
         OnAttackChanged?.Invoke();
     }
 

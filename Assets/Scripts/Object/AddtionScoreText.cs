@@ -6,12 +6,12 @@ using UnityEngine.Rendering;
 public class AdditionScoreText : MonoBehaviour, IPoolable
 {
     [SerializeField] private TextMeshProUGUI _text;
-    public void SetText(long amount, RectTransform tempRT)
+    public void SetText(double amount, RectTransform tempRT)
     {
         CanvasGroup cg = _text.GetComponent<CanvasGroup>();
         cg.alpha = 1;
         
-        _text.text = $"+{amount}";
+        _text.text = $"+{NumberFormatter.Format(amount)}";
 
         RectTransform rt = _text.rectTransform;
         rt.anchoredPosition = tempRT.anchoredPosition + new Vector2(0, -200f);   // tempRT 위치에서 시작

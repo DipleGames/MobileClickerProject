@@ -24,22 +24,23 @@ public class HUDManager : SingleTon<HUDManager>
     private void SetBottomUILayout()
     {
         _top_Paenl.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height * 0.55f);
+
         _bottom_Panel.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height * 0.45f);
 
-        const float menuRatio = 1f / 6f;
+        const float unit = 1f / 12f;
 
-        // 위쪽 5/6 영역
-        SetRectTransform(
+        // 중간 (m - n)/12 영역 (n/12 ~ m/12)
+         SetRectTransform(
             _contentUIContainer,
-            new Vector2(0f, menuRatio),
-            new Vector2(1f, 1f)
+            new Vector2(0f, unit * 3f),
+            new Vector2(1f, unit * 11f)
         );
 
-        // 아래쪽 1/6 영역
+        // 하단 영역 (0 ~ n/12)
         SetRectTransform(
             _menuUIContainer,
             new Vector2(0f, 0f),
-            new Vector2(1f, menuRatio)
+            new Vector2(1f, unit * 3f)
         );
     }
 
@@ -59,9 +60,9 @@ public class HUDManager : SingleTon<HUDManager>
         rectTransform.offsetMax = Vector2.zero;
     }
 
-    public void UpdateScoreUI(long currentScore)
+    public void UpdateScoreUI(double currentScore)
     {
-        _scoreText.text = currentScore.ToString();
+        _scoreText.text = $"{NumberFormatter.Format(currentScore)}";
     }
 
     /// <summary>
