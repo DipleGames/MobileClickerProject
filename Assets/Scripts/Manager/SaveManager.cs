@@ -34,6 +34,7 @@ public class SaveManager : SingleTon<SaveManager>
             currentStage = StageManager.Instance.CurrentStage,
             currentScore = ScoreManager.Instance.CurrentScore,
             currentAttackLevel = AttackManager.Instance.AttackLevel,
+            currentAbilityLevel = AbilityManager.Instance.AbilityLevel,
             lastSaveTime = DateTime.UtcNow.ToString("O")
         };
         

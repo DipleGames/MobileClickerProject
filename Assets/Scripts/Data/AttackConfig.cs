@@ -13,5 +13,5 @@ public class AttackConfig : ScriptableObject
     public float baseUpgradeCost = 10f;
 
     [Min(1)]
-    public float upgradeCostMultiplier = 1.2f;
+    public float upgradeCostMultiplier = 1.25f;
 }

@@ -33,18 +33,9 @@ public class ResponsiveGridLayout : MonoBehaviour
         float width = _rect.rect.width;
         float height = _rect.rect.height;
 
-        float availableWidth =
-            width - _grid.padding.horizontal
-            - _grid.spacing.x * (_columnCount - 1);
+        float cellWidth = width / _columnCount;
+        float cellHeight = height / _rowCount;
 
-        float availableHeight =
-            height - _grid.padding.vertical
-            - _grid.spacing.y * (_rowCount - 1);
-
-        float cellWidth = availableWidth / _columnCount;
-        float cellHeight = availableHeight / _rowCount;
-
-        // 가로 크기를 80%로 축소
         cellWidth *= _widthRatio;
 
         _grid.cellSize = new Vector2(cellWidth, cellHeight);

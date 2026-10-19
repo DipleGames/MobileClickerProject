@@ -33,11 +33,7 @@ public class GameManager : SingleTon<GameManager>
 
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
 
-        // 스테이지 적용
-        StageManager.Instance.ChangeStage(saveData.currentStage);
-
-        // 어택 레벨 적용
-        AttackManager.Instance.SetAttackLevel(saveData.currentAttackLevel);
+        SetInfo(saveData);
 
 
         // 종료 시간을 불러와 리워드 적용
@@ -56,6 +52,18 @@ public class GameManager : SingleTon<GameManager>
 
         return saveData;
 
+    }
+
+    void SetInfo(SaveData saveData)
+    {
+        // 스테이지 적용
+        StageManager.Instance.ChangeStage(saveData.currentStage);
+
+        // 어택 레벨 적용
+        AttackManager.Instance.SetAttackLevel(saveData.currentAttackLevel);
+
+        // 어택 레벨 적용
+        AbilityManager.Instance.SetAbilityLevel(saveData.currentAbilityLevel);
     }
 
 
