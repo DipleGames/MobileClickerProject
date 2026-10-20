@@ -1,0 +1,361 @@
+{
+  "format_version": 1,
+  "description_ko": "스크린샷을 참고해 새로 제작한 캐릭터 애니메이션. 원본 게임 파일 추출본이 아닙니다.",
+  "frame_size": [
+    512,
+    512
+  ],
+  "sheet_layout": {
+    "columns": 6,
+    "rows": 1,
+    "size": [
+      3072,
+      512
+    ],
+    "order": "left_to_right"
+  },
+  "pivot_normalized_bottom_left": [
+    0.5,
+    0.125
+  ],
+  "ground_anchor_pixels_top_left": [
+    256,
+    448
+  ],
+  "png_alpha": "RGBA transparent",
+  "characters": [
+    {
+      "id": "fire_golem",
+      "name_ko": "화염 골렘",
+      "role": "monster",
+      "clips": {
+        "idle": {
+          "frames": [
+            "fire_golem/idle/fire_golem_idle_01.png",
+            "fire_golem/idle/fire_golem_idle_02.png",
+            "fire_golem/idle/fire_golem_idle_03.png",
+            "fire_golem/idle/fire_golem_idle_04.png",
+            "fire_golem/idle/fire_golem_idle_05.png",
+            "fire_golem/idle/fire_golem_idle_06.png"
+          ],
+          "frame_count": 6,
+          "fps": 6,
+          "loop": true,
+          "sheet": "fire_golem/fire_golem_idle_sheet.png",
+          "preview": "previews/fire_golem_idle.gif"
+        },
+        "hit": {
+          "frames": [
+            "fire_golem/hit/fire_golem_hit_01.png",
+            "fire_golem/hit/fire_golem_hit_02.png",
+            "fire_golem/hit/fire_golem_hit_03.png",
+            "fire_golem/hit/fire_golem_hit_04.png",
+            "fire_golem/hit/fire_golem_hit_05.png",
+            "fire_golem/hit/fire_golem_hit_06.png"
+          ],
+          "frame_count": 6,
+          "fps": 12,
+          "loop": false,
+          "sheet": "fire_golem/fire_golem_hit_sheet.png",
+          "preview": "previews/fire_golem_hit.gif"
+        }
+      }
+    },
+    {
+      "id": "ice_dragon",
+      "name_ko": "얼음 드래곤",
+      "role": "monster",
+      "clips": {
+        "idle": {
+          "frames": [
+            "ice_dragon/idle/ice_dragon_idle_01.png",
+            "ice_dragon/idle/ice_dragon_idle_02.png",
+            "ice_dragon/idle/ice_dragon_idle_03.png",
+            "ice_dragon/idle/ice_dragon_idle_04.png",
+            "ice_dragon/idle/ice_dragon_idle_05.png",
+            "ice_dragon/idle/ice_dragon_idle_06.png"
+          ],
+          "frame_count": 6,
+          "fps": 6,
+          "loop": true,
+          "sheet": "ice_dragon/ice_dragon_idle_sheet.png",
+          "preview": "previews/ice_dragon_idle.gif"
+        },
+        "hit": {
+          "frames": [
+            "ice_dragon/hit/ice_dragon_hit_01.png",
+            "ice_dragon/hit/ice_dragon_hit_02.png",
+            "ice_dragon/hit/ice_dragon_hit_03.png",
+            "ice_dragon/hit/ice_dragon_hit_04.png",
+            "ice_dragon/hit/ice_dragon_hit_05.png",
+            "ice_dragon/hit/ice_dragon_hit_06.png"
+          ],
+          "frame_count": 6,
+          "fps": 12,
+          "loop": false,
+          "sheet": "ice_dragon/ice_dragon_hit_sheet.png",
+          "preview": "previews/ice_dragon_hit.gif"
+        }
+      }
+    },
+    {
+      "id": "lich_king",
+      "name_ko": "리치 왕",
+      "role": "monster",
+      "clips": {
+        "idle": {
+          "frames": [
+            "lich_king/idle/lich_king_idle_01.png",
+            "lich_king/idle/lich_king_idle_02.png",
+            "lich_king/idle/lich_king_idle_03.png",
+            "lich_king/idle/lich_king_idle_04.png",
+            "lich_king/idle/lich_king_idle_05.png",
+            "lich_king/idle/lich_king_idle_06.png"
+          ],
+          "frame_count": 6,
+          "fps": 6,
+          "loop": true,
+          "sheet": "lich_king/lich_king_idle_sheet.png",
+          "preview": "previews/lich_king_idle.gif"
+        },
+        "hit": {
+          "frames": [
+            "lich_king/hit/lich_king_hit_01.png",
+            "lich_king/hit/lich_king_hit_02.png",
+            "lich_king/hit/lich_king_hit_03.png",
+            "lich_king/hit/lich_king_hit_04.png",
+            "lich_king/hit/lich_king_hit_05.png",
+            "lich_king/hit/lich_king_hit_06.png"
+          ],
+          "frame_count": 6,
+          "fps": 12,
+          "loop": false,
+          "sheet": "lich_king/lich_king_hit_sheet.png",
+          "preview": "previews/lich_king_hit.gif"
+        }
+      }
+    },
+    {
+      "id": "anubis_guardian",
+      "name_ko": "아누비스 수호자",
+      "role": "monster",
+      "clips": {
+        "idle": {
+          "frames": [
+            "anubis_guardian/idle/anubis_guardian_idle_01.png",
+            "anubis_guardian/idle/anubis_guardian_idle_02.png",
+            "anubis_guardian/idle/anubis_guardian_idle_03.png",
+            "anubis_guardian/idle/anubis_guardian_idle_04.png",
+            "anubis_guardian/idle/anubis_guardian_idle_05.png",
+            "anubis_guardian/idle/anubis_guardian_idle_06.png"
+          ],
+          "frame_count": 6,
+          "fps": 6,
+          "loop": true,
+          "sheet": "anubis_guardian/anubis_guardian_idle_sheet.png",
+          "preview": "previews/anubis_guardian_idle.gif"
+        },
+        "hit": {
+          "frames": [
+            "anubis_guardian/hit/anubis_guardian_hit_01.png",
+            "anubis_guardian/hit/anubis_guardian_hit_02.png",
+            "anubis_guardian/hit/anubis_guardian_hit_03.png",
+            "anubis_guardian/hit/anubis_guardian_hit_04.png",
+            "anubis_guardian/hit/anubis_guardian_hit_05.png",
+            "anubis_guardian/hit/anubis_guardian_hit_06.png"
+          ],
+          "frame_count": 6,
+          "fps": 12,
+          "loop": false,
+          "sheet": "anubis_guardian/anubis_guardian_hit_sheet.png",
+          "preview": "previews/anubis_guardian_hit.gif"
+        }
+      }
+    },
+    {
+      "id": "forest_treant",
+      "name_ko": "숲의 수호자",
+      "role": "monster",
+      "clips": {
+        "idle": {
+          "frames": [
+            "forest_treant/idle/forest_treant_idle_01.png",
+            "forest_treant/idle/forest_treant_idle_02.png",
+            "forest_treant/idle/forest_treant_idle_03.png",
+            "forest_treant/idle/forest_treant_idle_04.png",
+            "forest_treant/idle/forest_treant_idle_05.png",
+            "forest_treant/idle/forest_treant_idle_06.png"
+          ],
+          "frame_count": 6,
+          "fps": 6,
+          "loop": true,
+          "sheet": "forest_treant/forest_treant_idle_sheet.png",
+          "preview": "previews/forest_treant_idle.gif"
+        },
+        "hit": {
+          "frames": [
+            "forest_treant/hit/forest_treant_hit_01.png",
+            "forest_treant/hit/forest_treant_hit_02.png",
+            "forest_treant/hit/forest_treant_hit_03.png",
+            "forest_treant/hit/forest_treant_hit_04.png",
+            "forest_treant/hit/forest_treant_hit_05.png",
+            "forest_treant/hit/forest_treant_hit_06.png"
+          ],
+          "frame_count": 6,
+          "fps": 12,
+          "loop": false,
+          "sheet": "forest_treant/forest_treant_hit_sheet.png",
+          "preview": "previews/forest_treant_hit.gif"
+        }
+      }
+    },
+    {
+      "id": "celestial_knight",
+      "name_ko": "천상의 기사",
+      "role": "monster",
+      "clips": {
+        "idle": {
+          "frames": [
+            "celestial_knight/idle/celestial_knight_idle_01.png",
+            "celestial_knight/idle/celestial_knight_idle_02.png",
+            "celestial_knight/idle/celestial_knight_idle_03.png",
+            "celestial_knight/idle/celestial_knight_idle_04.png",
+            "celestial_knight/idle/celestial_knight_idle_05.png",
+            "celestial_knight/idle/celestial_knight_idle_06.png"
+          ],
+          "frame_count": 6,
+          "fps": 6,
+          "loop": true,
+          "sheet": "celestial_knight/celestial_knight_idle_sheet.png",
+          "preview": "previews/celestial_knight_idle.gif"
+        },
+        "hit": {
+          "frames": [
+            "celestial_knight/hit/celestial_knight_hit_01.png",
+            "celestial_knight/hit/celestial_knight_hit_02.png",
+            "celestial_knight/hit/celestial_knight_hit_03.png",
+            "celestial_knight/hit/celestial_knight_hit_04.png",
+            "celestial_knight/hit/celestial_knight_hit_05.png",
+            "celestial_knight/hit/celestial_knight_hit_06.png"
+          ],
+          "frame_count": 6,
+          "fps": 12,
+          "loop": false,
+          "sheet": "celestial_knight/celestial_knight_hit_sheet.png",
+          "preview": "previews/celestial_knight_hit.gif"
+        }
+      }
+    },
+    {
+      "id": "abyss_kraken",
+      "name_ko": "심연의 크라켄",
+      "role": "monster",
+      "clips": {
+        "idle": {
+          "frames": [
+            "abyss_kraken/idle/abyss_kraken_idle_01.png",
+            "abyss_kraken/idle/abyss_kraken_idle_02.png",
+            "abyss_kraken/idle/abyss_kraken_idle_03.png",
+            "abyss_kraken/idle/abyss_kraken_idle_04.png",
+            "abyss_kraken/idle/abyss_kraken_idle_05.png",
+            "abyss_kraken/idle/abyss_kraken_idle_06.png"
+          ],
+          "frame_count": 6,
+          "fps": 6,
+          "loop": true,
+          "sheet": "abyss_kraken/abyss_kraken_idle_sheet.png",
+          "preview": "previews/abyss_kraken_idle.gif"
+        },
+        "hit": {
+          "frames": [
+            "abyss_kraken/hit/abyss_kraken_hit_01.png",
+            "abyss_kraken/hit/abyss_kraken_hit_02.png",
+            "abyss_kraken/hit/abyss_kraken_hit_03.png",
+            "abyss_kraken/hit/abyss_kraken_hit_04.png",
+            "abyss_kraken/hit/abyss_kraken_hit_05.png",
+            "abyss_kraken/hit/abyss_kraken_hit_06.png"
+          ],
+          "frame_count": 6,
+          "fps": 12,
+          "loop": false,
+          "sheet": "abyss_kraken/abyss_kraken_hit_sheet.png",
+          "preview": "previews/abyss_kraken_hit.gif"
+        }
+      }
+    },
+    {
+      "id": "inferno_dragon",
+      "name_ko": "멸망의 드래곤",
+      "role": "monster",
+      "clips": {
+        "idle": {
+          "frames": [
+            "inferno_dragon/idle/inferno_dragon_idle_01.png",
+            "inferno_dragon/idle/inferno_dragon_idle_02.png",
+            "inferno_dragon/idle/inferno_dragon_idle_03.png",
+            "inferno_dragon/idle/inferno_dragon_idle_04.png",
+            "inferno_dragon/idle/inferno_dragon_idle_05.png",
+            "inferno_dragon/idle/inferno_dragon_idle_06.png"
+          ],
+          "frame_count": 6,
+          "fps": 6,
+          "loop": true,
+          "sheet": "inferno_dragon/inferno_dragon_idle_sheet.png",
+          "preview": "previews/inferno_dragon_idle.gif"
+        },
+        "hit": {
+          "frames": [
+            "inferno_dragon/hit/inferno_dragon_hit_01.png",
+            "inferno_dragon/hit/inferno_dragon_hit_02.png",
+            "inferno_dragon/hit/inferno_dragon_hit_03.png",
+            "inferno_dragon/hit/inferno_dragon_hit_04.png",
+            "inferno_dragon/hit/inferno_dragon_hit_05.png",
+            "inferno_dragon/hit/inferno_dragon_hit_06.png"
+          ],
+          "frame_count": 6,
+          "fps": 12,
+          "loop": false,
+          "sheet": "inferno_dragon/inferno_dragon_hit_sheet.png",
+          "preview": "previews/inferno_dragon_hit.gif"
+        }
+      }
+    },
+    {
+      "id": "player_swordsman",
+      "name_ko": "흰머리 검사",
+      "role": "player",
+      "clips": {
+        "idle": {
+          "frames": [
+            "player_swordsman/idle/player_swordsman_idle_01.png",
+            "player_swordsman/idle/player_swordsman_idle_02.png",
+            "player_swordsman/idle/player_swordsman_idle_03.png",
+            "player_swordsman/idle/player_swordsman_idle_04.png",
+            "player_swordsman/idle/player_swordsman_idle_05.png",
+            "player_swordsman/idle/player_swordsman_idle_06.png"
+          ],
+          "frame_count": 6,
+          "fps": 6,
+          "loop": true,
+          "sheet": "player_swordsman/player_swordsman_idle_sheet.png",
+          "preview": "previews/player_swordsman_idle.gif"
+        },
+        "attack": {
+          "frames": [
+            "player_swordsman/attack/player_swordsman_attack_01.png",
+            "player_swordsman/attack/player_swordsman_attack_02.png",
+            "player_swordsman/attack/player_swordsman_attack_03.png",
+            "player_swordsman/attack/player_swordsman_attack_04.png",
+            "player_swordsman/attack/player_swordsman_attack_05.png",
+            "player_swordsman/attack/player_swordsman_attack_06.png"
+          ],
+          "frame_count": 6,
+          "fps": 12,
+          "loop": false,
+          "sheet": "player_swordsman/player_swordsman_attack_sheet.png",
+          "preview": "previews/player_swordsman_attack.gif"
+        }
+      }
+    }
+  ]
+}

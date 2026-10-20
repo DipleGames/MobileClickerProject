@@ -35,7 +35,7 @@ public class StageDataGenerator
         // 새로운 몬스터 데이터 생성
         MonsterData monsterData = new MonsterData
         {
-            monsterImg = baseMonster.monsterImg,
+            monsterAOC = baseMonster.monsterAOC,
             monsterID = baseMonster.monsterID,
             monsterHP = (float)hp,
             isDie = false

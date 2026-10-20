@@ -4,7 +4,7 @@ using System;
 [Serializable]
 public class MonsterData
 {
-    public Sprite monsterImg;
+    public AnimatorOverrideController monsterAOC;
     public int monsterID;
     public float monsterHP;
     public bool isDie;
