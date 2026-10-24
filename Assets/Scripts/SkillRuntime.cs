@@ -16,16 +16,14 @@ public class SkillRuntime
         return Data.isUnlocked && RemainingCoolTime <= 0f;
     }
 
-    public void Use()
+    public bool TryUse()
     {
         if (!CanUse())
-            return;
+            return false;
 
         RemainingCoolTime = Config.skillCoolTime;
-
-        // 스킬 효과 실행
+        return true;
     }
-
     public void Tick(float deltaTime)
     {
         if (RemainingCoolTime > 0f)

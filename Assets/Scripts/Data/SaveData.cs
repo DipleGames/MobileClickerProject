@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class SaveData
 {
@@ -7,5 +8,8 @@ public class SaveData
     public int currentAttackLevel; // 현재 공격력
     public int currentAbilityLevel; // 현재 주문력
     public string lastSaveTime; // 마지막 끌떄 시간
+
+    // 스킬 성장 데이터
+    public List<SkillData> skillDatas = new();
 
 }

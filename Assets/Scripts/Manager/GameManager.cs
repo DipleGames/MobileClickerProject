@@ -64,6 +64,9 @@ public class GameManager : SingleTon<GameManager>
 
         // 어택 레벨 적용
         AbilityManager.Instance.SetAbilityLevel(saveData.currentAbilityLevel);
+
+        // 스킬 상태 불러오기
+        SkillManager.Instance.InitializeSkills(saveData.skillDatas);
     }
 
 
