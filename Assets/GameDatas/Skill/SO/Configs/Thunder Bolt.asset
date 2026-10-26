@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Thunder Bolt
   m_EditorClassIdentifier: 
   skillID: 1
+  skillType: 0
   skillName: "\uC804\uAE30 \uCDA9\uACA9"
   skillIcon: {fileID: 5986030973748356752, guid: 36f98285089fce4458bb81191069f249, type: 3}
   skillDesc: "\uC0C1\uB300\uC5D0\uAC8C 100\uB9CC\uBCFC\uD2B8\uAC00 \uB118\uB294 \uC5C4\uCCAD\uB09C
     \uC591\uC758 \uC804\uAE30\uB97C \uB0B4\uBFDC\uC5B4 \uACF5\uACA9\uD569\uB2C8\uB2E4."
   skillMultiplier: 1.5
   skillCoolTime: 5
+  skillEffect: {fileID: 11400000, guid: fc80d708db660a34195583041f721897, type: 2}

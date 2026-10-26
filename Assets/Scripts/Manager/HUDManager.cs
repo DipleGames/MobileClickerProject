@@ -19,7 +19,6 @@ public class HUDManager : SingleTon<HUDManager>
         base.Awake();
 
         SetBottomUILayout();
-        ViewManager.Instance.menuView.SetSkillPanelUI(); // 스킬 패널 세팅
     }
 
     private void SetBottomUILayout()

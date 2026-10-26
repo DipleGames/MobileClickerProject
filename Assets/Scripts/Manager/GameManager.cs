@@ -67,6 +67,9 @@ public class GameManager : SingleTon<GameManager>
 
         // 스킬 상태 불러오기
         SkillManager.Instance.InitializeSkills(saveData.skillDatas);
+
+        // 스킬 패널 세팅
+        ViewManager.Instance.menuView.SetSkillPanelUI(); 
     }
 
 

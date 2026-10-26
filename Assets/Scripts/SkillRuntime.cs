@@ -1,14 +1,20 @@
+using System;
+using UnityEngine;
+
+[Serializable]
 public class SkillRuntime
 {
-    public SkillConfig Config { get; private set; }
-    public SkillData Data { get; private set; }
+    [SerializeField] private SkillConfig _config;
+    [SerializeField] private SkillData _data;
+    public SkillConfig Config => _config;
+    public SkillData Data => _data;
 
     public float RemainingCoolTime { get; private set; }
 
     public SkillRuntime(SkillConfig config, SkillData data)
     {
-        Config = config;
-        Data = data;
+        _config = config;
+        _data = data;
     }
 
     public bool CanUse()

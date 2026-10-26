@@ -39,14 +39,31 @@ public class MenuView : MonoBehaviour
     // 스킬 버튼 세팅
     public void SetSkillPanelUI()
     {
-        for(int i=0; i<SkillManager.Instance.SkillConfigs.Count; i++)
+        foreach (SkillConfig config in SkillManager.Instance.SkillConfigs)
         {
-            Button skill_Btn_Instance = Instantiate(skill_Btn_Prefab, skill_Panel.transform);
-            SkillExecutor skillExecutor = skill_Btn_Instance.GetComponent<SkillExecutor>();
-            skillExecutor.SetSkill(SkillManager.Instance.SkillConfigs[i].skillID);
-            skill_Btn_Instance.transform.GetChild(0).GetComponent<Image>().sprite = SkillManager.Instance.SkillConfigs[i].skillIcon;
-            skill_Btn_Instance.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = SkillManager.Instance.SkillConfigs[i].skillName;
-            skill_Btn_Instance.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = SkillManager.Instance.SkillConfigs[i].skillDesc;
+            // 스킬 ID를 통해 SkillRuntime 가져오기
+            SkillRuntime skill = SkillManager.Instance.GetSkill(config.skillID);
+
+            if (skill == null)
+                continue;
+
+            // 버튼 생성
+            Button skillBtnInstance = Instantiate(skill_Btn_Prefab, skill_Panel.transform);
+
+            // 스킬 연결
+            SkillBtn skillBtn = skillBtnInstance.GetComponent<SkillBtn>();
+            skillBtn.SetSkill(skill);
+
+            // UI 설정
+            Transform btnTransform = skillBtnInstance.transform;
+
+            btnTransform.GetChild(0).GetComponent<Image>().sprite = config.skillIcon;
+
+            btnTransform.GetChild(1).GetComponent<TextMeshProUGUI>().text = config.skillName;
+
+            btnTransform.GetChild(2).GetComponent<TextMeshProUGUI>().text = config.skillDesc;
+
+            btnTransform.GetChild(3).gameObject.SetActive(!skill.Data.isUnlocked);
         }
     }
 }

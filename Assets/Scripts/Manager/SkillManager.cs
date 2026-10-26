@@ -100,4 +100,15 @@ public class SkillManager : SingleTon<SkillManager>
 
         return result;
     }
+
+    public SkillRuntime GetSkill(int skillID)
+    {
+        if (_skills.TryGetValue(skillID, out SkillRuntime skill))
+        {
+            return skill;
+        }
+
+        Debug.LogWarning($"스킬 ID {skillID}를 찾을 수 없습니다.");
+        return null;
+    }
 }

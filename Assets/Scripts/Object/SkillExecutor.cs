@@ -8,7 +8,7 @@ public class SkillExecutor : MonoBehaviour
 
     void Awake()
     {
-        skillBtn.onClick.AddListener(OnClickedSkillBtn);
+        skillBtn.onClick.AddListener(OnClickedSkillExecutor);
     }
 
     public void SetSkill(int skillID)
@@ -16,7 +16,7 @@ public class SkillExecutor : MonoBehaviour
         _skillID = skillID;
     }
 
-    public void OnClickedSkillBtn()
+    public void OnClickedSkillExecutor()
     {
         SkillManager.Instance.UseSkill(_skillID);
     }

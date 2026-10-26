@@ -9,7 +9,7 @@ public enum SkillType
 [CreateAssetMenu(fileName = "SkillConfig", menuName = "Config/SkillConfig")]
 public class SkillConfig : ScriptableObject
 {
-    public int skillID; // 스킬 id
+    public int skillID;
     public SkillType skillType; // 스킬 타입
     public string skillName; // 스킬 이름
     public Sprite skillIcon; // 스킬 아이콘
