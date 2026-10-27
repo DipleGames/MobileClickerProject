@@ -16,7 +16,7 @@ public class MenuUIContainer : MonoBehaviour
     {
         for(int i=0; i<transform.childCount; i++)
         {
-            Button menuButton = transform.GetChild(0).GetComponent<Button>();
+            Button menuButton = transform.GetChild(i).GetComponent<Button>();
             _menuButtonList.Add(menuButton);
         }
     }

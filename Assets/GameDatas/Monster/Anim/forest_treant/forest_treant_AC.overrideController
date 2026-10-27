@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: forest_treant_AC
+  m_Controller: {fileID: 9100000, guid: 0ab438c383e04d84d9d137ca4e93c4ca, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 50f5aa08916a85b469c08acc05cac9bb, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 840ab6bfdc2e8b944bb45217d3b1193f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 52ace3b79308873439f0b09baeb9de60, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 189f33d0d63a36c449a9f1750105c40e, type: 2}

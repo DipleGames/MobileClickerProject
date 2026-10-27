@@ -11,7 +11,7 @@ public class GameView : MonoBehaviour
     /// 추가스코어 텍스트 출력을 담당하는 메서드
     /// </summary>
     /// <param name="amount"></param>
-    public void ShowAdditionScoreText(long amount)
+    public void ShowAdditionScoreText(double amount)
     {
         AdditionScoreText text = PoolManager.Instance.Get<AdditionScoreText>();
         text.SetText(amount, tempRT);

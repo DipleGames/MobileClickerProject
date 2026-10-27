@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: celestial_knight_AC
+  m_Controller: {fileID: 9100000, guid: 0ab438c383e04d84d9d137ca4e93c4ca, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 50f5aa08916a85b469c08acc05cac9bb, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 494b7eb4742ff4842a584b57ce5f9ca0, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 52ace3b79308873439f0b09baeb9de60, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8047d1680fc94a24ab81e4dae5edadd8, type: 2}

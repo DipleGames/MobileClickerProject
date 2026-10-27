@@ -1,10 +1,13 @@
 using System;
 using UnityEngine;
 using System.IO;
+using System.Collections;
 
 public class GameManager : SingleTon<GameManager>
 {
-    SaveData saveData;
+    private SaveData _saveData;
+    private Coroutine _gameCoroutine;
+
     void Start()
     {
         SetGame();
@@ -12,9 +15,10 @@ public class GameManager : SingleTon<GameManager>
 
     void SetGame()
     {
-        saveData = LoadData(); // 데이터를 로드하고
-        ScoreManager.Instance.CurrentScore = saveData.currentScore;
-        HUDManager.Instance.UpdateScoreUI(saveData.currentScore);
+        _saveData = LoadData(); // 데이터를 로드하고
+        ScoreManager.Instance.CurrentScore = _saveData.currentScore;
+        HUDManager.Instance.UpdateScoreUI(_saveData.currentScore);
+        _gameCoroutine = StartCoroutine(StartGameRoutine(StageManager.Instance.CurrentStage));
     }
 
     public SaveData LoadData()
@@ -29,6 +33,10 @@ public class GameManager : SingleTon<GameManager>
 
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
 
+        SetInfo(saveData);
+
+
+        // 종료 시간을 불러와 리워드 적용
         if (!string.IsNullOrEmpty(saveData.lastSaveTime))
         {
             DateTime lastSaveTime = DateTime.Parse(saveData.lastSaveTime, null, System.Globalization.DateTimeStyles.RoundtripKind);
@@ -44,5 +52,44 @@ public class GameManager : SingleTon<GameManager>
 
         return saveData;
 
+    }
+
+    void SetInfo(SaveData saveData)
+    {
+        // 스테이지 적용
+        StageManager.Instance.ChangeStage(saveData.currentStage);
+
+        // 어택 레벨 적용
+        AttackManager.Instance.SetAttackLevel(saveData.currentAttackLevel);
+
+        // 어택 레벨 적용
+        AbilityManager.Instance.SetAbilityLevel(saveData.currentAbilityLevel);
+
+        // 스킬 상태 불러오기
+        SkillManager.Instance.InitializeSkills(saveData.skillDatas);
+
+        // 스킬 패널 세팅
+        ViewManager.Instance.menuView.SetSkillPanelUI(); 
+    }
+
+
+    IEnumerator StartGameRoutine(int stage)
+    {
+        Debug.Log("루틴");
+        while(true)
+        {
+            StageManager.Instance.ChangeStage(stage);
+            yield return new WaitUntil(() => StageManager.Instance.IsClear);
+            stage = StageManager.Instance.CurrentStage + 1;
+        }
+    }
+
+    private void StopGameRoutine()
+    {
+        if (_gameCoroutine != null)
+        {
+            StopCoroutine(_gameCoroutine);
+            _gameCoroutine = null;
+        }
     }
 }
