@@ -66,6 +66,7 @@ public class SkillManager : SingleTon<SkillManager>
         }
     }
 
+    // 스킬 사용 메서드
     public void UseSkill(int skillID)
     {
         if (!_skills.TryGetValue(skillID, out SkillRuntime skill))
@@ -82,6 +83,33 @@ public class SkillManager : SingleTon<SkillManager>
         Debug.Log($"{skill.Config.skillName} 사용!");
     }
 
+    // 스킬 해금 시도 메서드
+    public bool TryUnlockSkill(int skillID)
+    {
+        SkillRuntime skill = GetSkill(skillID);
+
+        if (skill == null)
+            return false;
+
+        if (skill.Data.isUnlocked)
+            return false;
+
+        SkillUnlockCondition condition = skill.Config.unlockCondition;
+
+        if (!condition.CanUnlock(StageManager.Instance.CurrentStage, ScoreManager.Instance.CurrentScore))
+        {
+            return false;
+        }
+
+        if (!ScoreManager.Instance.TrySubtractScore(condition.requiredGold))
+        return false;
+
+        skill.Data.isUnlocked = true;
+
+        return true;
+    }
+
+    // 스킬데이터 리스트 얻는 메서드
    public List<SkillData> GetSaveSkillDatas()
     {
         List<SkillData> result = new();
@@ -101,6 +129,7 @@ public class SkillManager : SingleTon<SkillManager>
         return result;
     }
 
+    // 스킬 런타임 상태 얻는 메서드
     public SkillRuntime GetSkill(int skillID)
     {
         if (_skills.TryGetValue(skillID, out SkillRuntime skill))

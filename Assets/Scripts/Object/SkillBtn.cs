@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,12 +6,13 @@ public class SkillBtn : MonoBehaviour
 {
     [SerializeField] private SkillRuntime _skill;
 
-    [SerializeField] private Button skillBtn;
-    [SerializeField] private GameObject lockOverlay;
+    [SerializeField] private Button _skillBtn;
+    public GameObject lockOverlay;
+    public TextMeshProUGUI unlockCondition_text;
 
     void Awake()
     {
-        skillBtn.onClick.AddListener(OnClickedSkillBtn);
+        _skillBtn.onClick.AddListener(OnClickedSkillBtn);
     }
 
     public void SetSkill(SkillRuntime skill)
@@ -23,7 +25,14 @@ public class SkillBtn : MonoBehaviour
         if (_skill == null)
             return;
 
-        _skill.Data.isUnlocked = true;
-        lockOverlay.SetActive(false);
+        if (!_skill.Data.isUnlocked)
+        {
+            if (SkillManager.Instance.TryUnlockSkill(_skill.Config.skillID))
+            {
+                lockOverlay.SetActive(false);
+            }
+
+            return;
+        }
     }
 }

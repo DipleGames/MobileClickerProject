@@ -28,6 +28,7 @@ public class StageManager : SingleTon<StageManager>
         base.Awake();
 
         OnChangedStage += SpawnMonster;
+        OnChangedStage += HUDManager.Instance.UpdateStageUI;
         generator = new StageDataGenerator(stageConfig);
     }
 

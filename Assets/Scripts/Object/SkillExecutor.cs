@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class SkillExecutor : MonoBehaviour
 {
-    [SerializeField] private int _skillID;
+    [SerializeField] private SkillRuntime _skill;
     [SerializeField] private Button skillBtn;
 
     void Awake()
@@ -11,13 +11,14 @@ public class SkillExecutor : MonoBehaviour
         skillBtn.onClick.AddListener(OnClickedSkillExecutor);
     }
 
-    public void SetSkill(int skillID)
+    public void SetSkill(SkillRuntime skill)
     {
-        _skillID = skillID;
+        _skill = skill;
+        GetComponent<Image>().sprite = _skill.Config.skillIcon;
     }
 
     public void OnClickedSkillExecutor()
     {
-        SkillManager.Instance.UseSkill(_skillID);
+        SkillManager.Instance.UseSkill(_skill.Config.skillID);
     }
 }
