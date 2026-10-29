@@ -76,7 +76,16 @@ public class HUDManager : SingleTon<HUDManager>
 
     public void UpdateStageUI(int currentStage)
     {
-        _stage_text.text = $"STAGE {currentStage}";
+        if(StageManager.Instance.CurrentMonster.currentMonsterData.isBoss)
+        {
+            _stage_text.text = $"Boss {currentStage}";
+            _stage_text.color = Color.red;
+        }
+        else
+        {
+            _stage_text.text = $"STAGE {currentStage}";
+            _stage_text.color = Color.yellow;
+        }
     }
 
     /// <summary>

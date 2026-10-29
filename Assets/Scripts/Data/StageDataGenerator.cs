@@ -12,10 +12,10 @@ public class StageDataGenerator
 
     public StageData Generate(int stage)
     {
-        bool isBoss = stage % config.bossInterval == 0;
+        bool isbossStage = stage % config.bossInterval == 0;
 
         // 몬스터 종류 결정
-        MonsterData[] monsters = isBoss
+        MonsterData[] monsters = isbossStage
             ? config.bossMonsters
             : config.normalMonsters;
 
@@ -27,7 +27,7 @@ public class StageDataGenerator
         // 스테이지에 따른 HP 계산
         double hp = baseMonster.monsterHP * Math.Pow(config.hpMultiplier, stage - 1);
 
-        if (isBoss)
+        if (isbossStage)
         {
             hp *= config.bossHpMultiplier;
         }
@@ -38,6 +38,7 @@ public class StageDataGenerator
             monsterAOC = baseMonster.monsterAOC,
             monsterID = baseMonster.monsterID,
             monsterHP = (float)hp,
+            isBoss = isbossStage,
             isDie = false
         };
 
