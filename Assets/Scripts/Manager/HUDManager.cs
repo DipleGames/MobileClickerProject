@@ -1,3 +1,4 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
 
@@ -15,6 +16,8 @@ public class HUDManager : SingleTon<HUDManager>
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI _score_text;
     [SerializeField] private TextMeshProUGUI _stage_text;
+    [SerializeField] private GameObject _boss_timer;
+    public TextMeshProUGUI boss_timer_text;
 
     protected override void Awake()
     {
@@ -80,11 +83,13 @@ public class HUDManager : SingleTon<HUDManager>
         {
             _stage_text.text = $"Boss {currentStage}";
             _stage_text.color = Color.red;
+            _boss_timer.SetActive(true);
         }
         else
         {
             _stage_text.text = $"STAGE {currentStage}";
             _stage_text.color = Color.yellow;
+            _boss_timer.SetActive(false);
         }
     }
 

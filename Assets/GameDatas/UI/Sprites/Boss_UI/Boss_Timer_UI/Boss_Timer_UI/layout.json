@@ -1,0 +1,82 @@
+{
+  "root_size": [
+    768,
+    448
+  ],
+  "rect_transform_anchor_min": [
+    0.5,
+    0.5
+  ],
+  "rect_transform_anchor_max": [
+    0.5,
+    0.5
+  ],
+  "rect_transform_pivot": [
+    0.5,
+    0.5
+  ],
+  "coordinate_system": "Unity anchoredPosition, center origin, positive Y upward",
+  "draw_order_back_to_front": [
+    {
+      "name": "WarningGlow",
+      "file": "PNG/timer_warning_glow.png",
+      "size": [
+        722,
+        394
+      ],
+      "position": [
+        0,
+        -10
+      ],
+      "optional": true
+    },
+    {
+      "name": "TimerFrame",
+      "file": "PNG/timer_frame.png",
+      "size": [
+        512,
+        224
+      ],
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Hourglass",
+      "file": "PNG/hourglass_icon.png",
+      "size": [
+        96,
+        160
+      ],
+      "position": [
+        -178,
+        0
+      ],
+      "preserve_aspect": true
+    },
+    {
+      "name": "TimeText",
+      "component": "TextMeshProUGUI",
+      "size": [
+        300,
+        116
+      ],
+      "position": [
+        76,
+        -8
+      ],
+      "font_size": 66,
+      "font_style": "Bold",
+      "alignment": "Center and Middle",
+      "color": "#FFFFFF",
+      "sample_text": "4.8s"
+    }
+  ],
+  "notes_ko": [
+    "모든 이미지는 외부 배경이 투명합니다.",
+    "모래시계는 정지 아이콘이며 모래가 움직이는 애니메이션은 포함하지 않습니다.",
+    "시간 숫자는 PNG에 포함하지 않고 TextMeshPro에서 갱신합니다.",
+    "축소할 때는 자식 전체가 함께 줄어들도록 루트 단위로 배율을 조절합니다."
+  ]
+}
