@@ -1,3 +1,4 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
 
@@ -9,10 +10,14 @@ public class HUDManager : SingleTon<HUDManager>
     [Header("하단 패널")]
     [SerializeField] private RectTransform _bottom_Panel;
     [SerializeField] private RectTransform _contentUIContainer;
+    [SerializeField] private RectTransform _skillExcutorContainer;
     [SerializeField] private RectTransform _menuUIContainer;
 
-    [Header("Score UI")]
-    [SerializeField] private TextMeshProUGUI _scoreText;
+    [Header("UI")]
+    [SerializeField] private TextMeshProUGUI _score_text;
+    [SerializeField] private TextMeshProUGUI _stage_text;
+    [SerializeField] private GameObject _boss_timer;
+    public TextMeshProUGUI boss_timer_text;
 
     protected override void Awake()
     {
@@ -33,6 +38,13 @@ public class HUDManager : SingleTon<HUDManager>
          SetRectTransform(
             _contentUIContainer,
             new Vector2(0f, unit * 3f),
+            new Vector2(1f, unit * 11f)
+        );
+
+        // 중간 (m - n)/12 영역 (n/12 ~ m/12)
+         SetRectTransform(
+            _skillExcutorContainer,
+            new Vector2(0f, unit * 3.5f),
             new Vector2(1f, unit * 11f)
         );
 
@@ -62,7 +74,23 @@ public class HUDManager : SingleTon<HUDManager>
 
     public void UpdateScoreUI(double currentScore)
     {
-        _scoreText.text = $"{NumberFormatter.Format(currentScore)}";
+        _score_text.text = $"{NumberFormatter.Format(currentScore)}";
+    }
+
+    public void UpdateStageUI(int currentStage)
+    {
+        if(StageManager.Instance.CurrentMonster.currentMonsterData.isBoss)
+        {
+            _stage_text.text = $"Boss {currentStage}";
+            _stage_text.color = Color.red;
+            _boss_timer.SetActive(true);
+        }
+        else
+        {
+            _stage_text.text = $"STAGE {currentStage}";
+            _stage_text.color = Color.yellow;
+            _boss_timer.SetActive(false);
+        }
     }
 
     /// <summary>

@@ -19,6 +19,9 @@ public class SkillConfig : ScriptableObject
     public float skillMultiplier = 1.5f; // 스킬 주문력 배율
     public float skillCoolTime = 5f; // 스킬 쿨타임
 
+    [Header("스킬 해금 조건")]
+    public SkillUnlockCondition unlockCondition;
+
     [Header("스킬 실행효과")]
     public SkillEffect skillEffect;
 }

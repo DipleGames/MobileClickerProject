@@ -36,7 +36,8 @@ public class SaveManager : SingleTon<SaveManager>
             currentAttackLevel = AttackManager.Instance.AttackLevel,
             currentAbilityLevel = AbilityManager.Instance.AbilityLevel,
             lastSaveTime = DateTime.UtcNow.ToString("O"),
-            skillDatas = SkillManager.Instance.GetSaveSkillDatas()
+            skillDatas = SkillManager.Instance.GetSaveSkillDatas(),
+            equippedSkillIDs = SkillManagement.Instance.GetEquippedSkillIDs()
         };
         
         Save(saveData);

@@ -1,0 +1,124 @@
+{
+  "description_ko": "3번 보스전 강조형의 상단 스테이지 및 HP 전용 리소스. 텍스트는 Unity에서 별도 표시.",
+  "coordinate_system": "asset pixel rectangles use top-left origin; Unity positions below use centered anchors/pivots",
+  "assets": {
+    "boss_stage_plate.png": {
+      "size": [
+        768,
+        248
+      ],
+      "text_safe_rect_top_left": [
+        164,
+        94,
+        440,
+        66
+      ],
+      "type": "Image Simple"
+    },
+    "boss_hp_frame_empty.png": {
+      "size": [
+        768,
+        120
+      ],
+      "fill_rect_top_left": [
+        91,
+        47,
+        586,
+        26
+      ],
+      "type": "Image Simple",
+      "includes_empty_trough": true
+    },
+    "boss_hp_fill_red.png": {
+      "size": [
+        586,
+        26
+      ],
+      "type": "Image Filled",
+      "fill_method": "Horizontal",
+      "fill_origin": "Left",
+      "fill_range": [
+        0,
+        1
+      ]
+    }
+  },
+  "hp_fill_child_recttransform": {
+    "parent": "HPFrame",
+    "anchorMin": [
+      0.5,
+      0.5
+    ],
+    "anchorMax": [
+      0.5,
+      0.5
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "sizeDelta": [
+      586,
+      26
+    ],
+    "anchoredPosition": [
+      0,
+      0
+    ]
+  },
+  "stage_text_child_recttransform": {
+    "BossLabel": {
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "sizeDelta": [
+        360,
+        24
+      ],
+      "anchoredPosition": [
+        0,
+        14
+      ],
+      "font_size": 20,
+      "color_hex": "E9A477"
+    },
+    "StageLabel": {
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "sizeDelta": [
+        440,
+        40
+      ],
+      "anchoredPosition": [
+        0,
+        -13
+      ],
+      "font_size": 32,
+      "color_hex": "FFE3A0"
+    }
+  },
+  "notes": [
+    "Fill artwork is an opaque red rectangle: do not add transparent padding.",
+    "Scale the whole parent uniformly to preserve horn and skull proportions.",
+    "All visible text is separate from supplied sprite art."
+  ]
+}

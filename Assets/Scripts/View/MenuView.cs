@@ -63,7 +63,8 @@ public class MenuView : MonoBehaviour
 
             btnTransform.GetChild(2).GetComponent<TextMeshProUGUI>().text = config.skillDesc;
 
-            btnTransform.GetChild(3).gameObject.SetActive(!skill.Data.isUnlocked);
+            skillBtn.unlockCondition_text.text = $"스테이지 {skill.Config.unlockCondition.requiredStage}에서 잠금 해제";
+            skillBtn.lockOverlay.SetActive(!skill.Data.isUnlocked);
         }
     }
 }

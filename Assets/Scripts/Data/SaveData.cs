@@ -12,4 +12,7 @@ public class SaveData
     // 스킬 성장 데이터
     public List<SkillData> skillDatas = new();
 
+    // 스킬 장착 정보 (슬롯 6개)
+    public int[] equippedSkillIDs = { -1, -1, -1, -1, -1, -1 };
+
 }

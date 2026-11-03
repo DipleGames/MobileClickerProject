@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -7,9 +8,8 @@ public class ClickHandler : MonoBehaviour, IPointerDownHandler
     {
         double damage = DamageCalcurator.CalculateDamage(AttackManager.Instance.CurrentAttackPower, 1f, 1f);
 
-        StageManager.Instance.CurrentMonster.TakeDamage(damage);
+        StageManager.Instance.CurrentMonster.TakeDamage(false, damage);
         ScoreManager.Instance.AddScore(damage);
-        ViewManager.Instance.gameView.ShowAdditionScoreText(damage);
         ViewManager.Instance.gameView.ShowTouchEffect();
     }
 }

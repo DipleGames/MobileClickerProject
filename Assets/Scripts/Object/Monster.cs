@@ -68,12 +68,13 @@ public class Monster : MonoBehaviour
     }
 
     private static readonly int HitHash = Animator.StringToHash("Hit");
-    public void TakeDamage(double damage)
+    public void TakeDamage(bool isSkill, double damage)
     {
         if (IsDie) return;
 
         CurrentMonsterHP -= (float)damage;
         _anim.Play(HitHash, 0, 0f); // Hit 실행
         ViewManager.Instance.monsterView.UpdateMonsterHP(_currentmonsterHP, _monsterHP);
+        ViewManager.Instance.gameView.ShowAdditionScoreText(isSkill, damage);
     }
 }
