@@ -24,4 +24,7 @@ public class SkillConfig : ScriptableObject
 
     [Header("스킬 실행효과")]
     public SkillEffect skillEffect;
+
+    [Header("스킬 SFX")]
+    public AudioClip skill_SFX;
 }
