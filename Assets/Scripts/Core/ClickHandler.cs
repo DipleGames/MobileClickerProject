@@ -8,6 +8,7 @@ public class ClickHandler : MonoBehaviour, IPointerDownHandler
     {
         double damage = DamageCalcurator.CalculateDamage(AttackManager.Instance.CurrentAttackPower, 1f, 1f);
 
+        Player.Instance.PlayAttack();
         StageManager.Instance.CurrentMonster.TakeDamage(false, damage);
         ScoreManager.Instance.AddScore(damage);
         ViewManager.Instance.gameView.ShowTouchEffect();
