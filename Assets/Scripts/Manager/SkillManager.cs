@@ -80,6 +80,10 @@ public class SkillManager : SingleTon<SkillManager>
 
         // 실제 스킬 효과 실행
         skill.Config.skillEffect.Execute(skill);
+        if(skill.Config.skill_SFX != null)
+        {
+            AudioManager.Instance.PlaySFX(skill.Config.skill_SFX);
+        }
         Debug.Log($"{skill.Config.skillName} 사용!");
     }
 
