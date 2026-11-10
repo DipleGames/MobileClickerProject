@@ -2,6 +2,8 @@ using UnityEngine;
 using System;
 public class UpgradeManager : SingleTon<UpgradeManager>
 {
+    [SerializeField] private AudioClip _upgrade_Fail;
+    [SerializeField] private AudioClip _upgrade_Success;
     public double AttackPowerUpgradeCost
     {
         get
@@ -27,8 +29,12 @@ public class UpgradeManager : SingleTon<UpgradeManager>
         double cost = AttackPowerUpgradeCost;
         // 골드 부족 시 업그레이드 중단
         if (!ScoreManager.Instance.TrySubtractScore(cost))
+        {
+            AudioManager.Instance.PlaySFX(_upgrade_Fail);
             return;
+        }
 
+        AudioManager.Instance.PlaySFX(_upgrade_Success);
         AttackManager.Instance.UpgradeAttack();
     }
 
@@ -37,8 +43,12 @@ public class UpgradeManager : SingleTon<UpgradeManager>
         double cost = AbilityPowerUpgradeCost;
         // 골드 부족 시 업그레이드 중단
         if (!ScoreManager.Instance.TrySubtractScore(cost))
+        {
+            AudioManager.Instance.PlaySFX(_upgrade_Fail);
             return;
+        }
 
+        AudioManager.Instance.PlaySFX(_upgrade_Success);
         AbilityManager.Instance.UpgradeAbility();
     }
 }
