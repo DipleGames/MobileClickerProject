@@ -16,6 +16,12 @@ public class MenuView : MonoBehaviour
     public TextMeshProUGUI currentAbilityPower_Text;
     public TextMeshProUGUI AbilityLevelUpgradeCost_Text;
 
+    [Header("드랍확률 업데이트 관련")]
+    public TextMeshProUGUI DropLevelUpgrade_Text;
+    public TextMeshProUGUI currentDropProb_Text;
+    public TextMeshProUGUI DropLevelUpgradeCost_Text;
+
+
     [Header("스킬 관련")]
     public GameObject skill_Panel;
     public Button skill_Btn_Prefab;
@@ -34,6 +40,14 @@ public class MenuView : MonoBehaviour
         AbilityLevelUpgrade_Text.text = $"주문력 강화 Lv.{AbilityManager.Instance.AbilityLevel}";
         currentAbilityPower_Text.text = $"현재 주문력 {NumberFormatter.Format(AbilityManager.Instance.CurrentAbilityPower)}";
         AbilityLevelUpgradeCost_Text.text = $"{NumberFormatter.Format(UpgradeManager.Instance.AbilityPowerUpgradeCost)}";
+    }
+
+    // 드랍확률 업그레이드 시 UI변경
+    public void UpdateDropLevelUpgradeUI()
+    {
+        DropLevelUpgrade_Text.text = $"드랍확률 강화 Lv.{DropManager.Instance.DropLevel}";
+        currentDropProb_Text.text = $"현재 확률 {NumberFormatter.FormatPercent(DropManager.Instance.CurrentDropProb)}";
+        DropLevelUpgradeCost_Text.text = $"{NumberFormatter.Format(UpgradeManager.Instance.DropProbUpgradeCost)}";
     }
 
     // 스킬 버튼 세팅

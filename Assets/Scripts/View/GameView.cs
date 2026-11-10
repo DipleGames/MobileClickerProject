@@ -8,13 +8,23 @@ public class GameView : MonoBehaviour
     [SerializeField] private RectTransform topPanelRT;
 
     /// <summary>
+    /// 데미지 텍스트 출력을 담당하는 메서드
+    /// </summary>
+    /// <param name="amount"></param>
+    public void ShowDamageText(bool isSkill, double amount)
+    {
+        DamageText text = PoolManager.Instance.Get<DamageText>();
+        text.SetText(isSkill, amount, tempRT);
+    }
+
+    /// <summary>
     /// 추가스코어 텍스트 출력을 담당하는 메서드
     /// </summary>
     /// <param name="amount"></param>
-    public void ShowAdditionScoreText(bool isSkill, double amount)
+    public void ShowAdditionScoreText(double amount)
     {
         AdditionScoreText text = PoolManager.Instance.Get<AdditionScoreText>();
-        text.SetText(isSkill, amount, tempRT);
+        text.SetText(amount, tempRT);
     }
 
     /// <summary>

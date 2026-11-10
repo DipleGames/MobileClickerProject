@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class PoolManager : SingleTon<PoolManager>
 {
-    [Header("오브젝트")]
-    [SerializeField] private AdditionScoreText _additionScore_Text_Prefab;
+    [Header("데미지 텍스트")]
+    [SerializeField] private DamageText _damage_Text_Prefab;
+    [SerializeField] private Transform _damage_Text_Parent;
+    [SerializeField] private int _damage_Text_PoolSize = 32;
+
+    [Header("추가 스코어 텍스트")]
+    [SerializeField] private AdditionScoreText _addition_Text_Prefab;
     [SerializeField] private Transform _additionScore_Text_Parent;
     [SerializeField] private int _additionScore_Text_PoolSize = 32;
+
 
     private readonly Dictionary<Type, object> _pools = new();
     protected override void Awake()
     {
         base.Awake();
 
-        Register(_additionScore_Text_Prefab, _additionScore_Text_Parent, _additionScore_Text_PoolSize);
+        Register(_damage_Text_Prefab, _damage_Text_Parent, _damage_Text_PoolSize);
+        Register(_addition_Text_Prefab, _additionScore_Text_Parent, _additionScore_Text_PoolSize);
     }
 
      private void Register<T>(T prefab, Transform parent, int poolSize) where T : MonoBehaviour, IPoolable

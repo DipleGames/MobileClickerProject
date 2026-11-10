@@ -30,4 +30,9 @@ public static class NumberFormatter
 
         return $"{(value < 0 ? "-" : "")}{shortened:0.#}{suffixes[index]}";
     }
+
+    public static string FormatPercent(double value)
+    {
+        return $"{value:0.#}%";
+    }
 }

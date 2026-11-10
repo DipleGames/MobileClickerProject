@@ -2,8 +2,10 @@ using UnityEngine;
 using System;
 public class UpgradeManager : SingleTon<UpgradeManager>
 {
+    [Header("업그레이드 사운드 SFX")]
     [SerializeField] private AudioClip _upgrade_Fail;
     [SerializeField] private AudioClip _upgrade_Success;
+
     public double AttackPowerUpgradeCost
     {
         get
@@ -20,6 +22,16 @@ public class UpgradeManager : SingleTon<UpgradeManager>
         {
             AbilityConfig config = AbilityManager.Instance.AbilityConfig;
             double cost = config.baseUpgradeCost *  Math.Pow(config.upgradeCostMultiplier, AbilityManager.Instance.AbilityLevel - 1);
+            return Math.Ceiling(cost);
+        }
+    }
+
+    public double DropProbUpgradeCost
+    {
+        get
+        {
+            DropConfig config = DropManager.Instance.DropConfig;
+            double cost = config.baseUpgradeCost *  Math.Pow(config.upgradeCostMultiplier, DropManager.Instance.DropLevel - 1);
             return Math.Ceiling(cost);
         }
     }
@@ -50,6 +62,20 @@ public class UpgradeManager : SingleTon<UpgradeManager>
 
         AudioManager.Instance.PlaySFX(_upgrade_Success);
         AbilityManager.Instance.UpgradeAbility();
+    }
+
+    public void OnClickedDropLevelUpgradeBtn()
+    {
+        double cost = DropProbUpgradeCost;
+        // 골드 부족 시 업그레이드 중단
+        if (!ScoreManager.Instance.TrySubtractScore(cost))
+        {
+            AudioManager.Instance.PlaySFX(_upgrade_Fail);
+            return;
+        }
+
+        AudioManager.Instance.PlaySFX(_upgrade_Success);
+        DropManager.Instance.UpgradeDropProb();
     }
 }
 
