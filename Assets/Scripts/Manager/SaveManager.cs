@@ -35,6 +35,7 @@ public class SaveManager : SingleTon<SaveManager>
             currentScore = ScoreManager.Instance.CurrentScore,
             currentAttackLevel = AttackManager.Instance.AttackLevel,
             currentAbilityLevel = AbilityManager.Instance.AbilityLevel,
+            currentDropLevel = DropManager.Instance.DropLevel,
             lastSaveTime = DateTime.UtcNow.ToString("O"),
             skillDatas = SkillManager.Instance.GetSaveSkillDatas(),
             equippedSkillIDs = SkillManagement.Instance.GetEquippedSkillIDs()

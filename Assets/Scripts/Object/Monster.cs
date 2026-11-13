@@ -75,6 +75,6 @@ public class Monster : MonoBehaviour
         CurrentMonsterHP -= (float)damage;
         _anim.Play(HitHash, 0, 0f); // Hit 실행
         ViewManager.Instance.monsterView.UpdateMonsterHP(_currentmonsterHP, _monsterHP);
-        ViewManager.Instance.gameView.ShowAdditionScoreText(isSkill, damage);
+        ViewManager.Instance.gameView.ShowDamageText(isSkill, damage);
     }
 }

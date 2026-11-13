@@ -3,7 +3,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Rendering;
 
-public class AdditionScoreText : MonoBehaviour, IPoolable
+public class DamageText : MonoBehaviour, IPoolable
 {
     [SerializeField] private TextMeshProUGUI _text;
     public void SetText(bool isSkill, double amount, RectTransform tempRT)
@@ -28,7 +28,7 @@ public class AdditionScoreText : MonoBehaviour, IPoolable
         seq.Append(rt.DOAnchorPos(new Vector2(randomX, 200f), 1.5f).SetRelative());
         seq.Join(cg.DOFade(0f, 2f));
 
-        seq.OnComplete(() => PoolManager.Instance.Return<AdditionScoreText>(this));
+        seq.OnComplete(() => PoolManager.Instance.Return<DamageText>(this));
     }
 
     public void OnSpawnFromPool()

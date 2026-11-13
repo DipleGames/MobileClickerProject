@@ -10,7 +10,7 @@ public class ClickHandler : MonoBehaviour, IPointerDownHandler
 
         Player.Instance.PlayAttack();
         StageManager.Instance.CurrentMonster.TakeDamage(false, damage);
-        ScoreManager.Instance.AddScore(damage);
+        DropManager.Instance.DropScore(damage);
         ViewManager.Instance.gameView.ShowTouchEffect();
     }
 }
