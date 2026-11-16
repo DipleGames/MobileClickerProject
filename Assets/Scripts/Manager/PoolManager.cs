@@ -14,6 +14,11 @@ public class PoolManager : SingleTon<PoolManager>
     [SerializeField] private Transform _additionScore_Text_Parent;
     [SerializeField] private int _additionScore_Text_PoolSize = 32;
 
+    [Header("스킬 이펙트")]
+    [SerializeField] private SkillEffectPlayer _skillEffectPlayer_Prefab;
+    [SerializeField] private Transform _skillEffectPlayer_Parent;
+    [SerializeField] private int _skillEffectPlayer_PoolSize = 4;
+
 
     private readonly Dictionary<Type, object> _pools = new();
     protected override void Awake()
@@ -22,6 +27,7 @@ public class PoolManager : SingleTon<PoolManager>
 
         Register(_damage_Text_Prefab, _damage_Text_Parent, _damage_Text_PoolSize);
         Register(_addition_Text_Prefab, _additionScore_Text_Parent, _additionScore_Text_PoolSize);
+        Register(_skillEffectPlayer_Prefab, _skillEffectPlayer_Parent, _skillEffectPlayer_PoolSize);
     }
 
      private void Register<T>(T prefab, Transform parent, int poolSize) where T : MonoBehaviour, IPoolable

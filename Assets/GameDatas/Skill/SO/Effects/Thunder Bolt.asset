@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26e4eddd910aa14418fd6f964ce72b73, type: 3}
   m_Name: Thunder Bolt
   m_EditorClassIdentifier: 
+  effectClip: {fileID: 7400000, guid: d83c700524fdcf04bb8490b22aa647b7, type: 2}
