@@ -8,8 +8,7 @@ public class SkillEffectPlayer : MonoBehaviour, IPoolable
     private AnimatorOverrideController _overrideController;
     private Coroutine _returnCoroutine;
 
-    private static readonly int EffectHash =
-        Animator.StringToHash("SkillEffect");
+    private static readonly int EffectHash = Animator.StringToHash("SkillEffect");
 
     private void Awake()
     {
