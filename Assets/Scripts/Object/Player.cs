@@ -17,12 +17,12 @@ public class Player : SingleTon<Player>
     /// <summary>
     /// 기본 공격 모션을 재생하고 검기 연출을 실행한다.
     /// </summary>
-    public void PlayAttack(RectTransform target, double damage)
+    public void PlayAttack(RectTransform target)
     {
         int attackHash = _useFirstAttack ? _attack1Hash : _attack2Hash;
 
         _anim.Play(attackHash, 0, 0f);
-        ShowBasicAttackSlash(target, damage);
+        ShowBasicAttackSlash(target);
 
         _useFirstAttack = !_useFirstAttack;
     }
@@ -30,9 +30,9 @@ public class Player : SingleTon<Player>
     /// <summary>
     /// 플레이어의 칼 휘두름 위치에서 몬스터 몸통 방향으로 검기를 날린다.
     /// </summary>
-    private void ShowBasicAttackSlash(RectTransform target, double damage)
+    private void ShowBasicAttackSlash(RectTransform target)
     {
         BasicAttackSlash slash = PoolManager.Instance.Get<BasicAttackSlash>();
-        slash.InitSlash(target, damage);
+        slash.InitSlash(target);
     }
 }

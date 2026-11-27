@@ -17,7 +17,6 @@ public class BasicAttackSlash : MonoBehaviour, IPoolable
     private Vector2 _startPosition; // 프리팹에 설정된 발사 위치
     private float _targetYOffset; // 이번 검기의 높이 오프셋
 
-    private double _damage;
 
     /// <summary>
     /// 검기와 부모의 좌표 정보를 저장하고 발사 위치를 기록한다.
@@ -66,6 +65,8 @@ public class BasicAttackSlash : MonoBehaviour, IPoolable
 
         if ((targetPosition - nextPosition).sqrMagnitude <= _arrivalDistance * _arrivalDistance)
         {
+            BasicAttackImpact basicAttackImpact = PoolManager.Instance.Get<BasicAttackImpact>();
+            basicAttackImpact.InitImpact(_rect.position);
             PoolManager.Instance.Return(this);
         }
     }
@@ -73,12 +74,11 @@ public class BasicAttackSlash : MonoBehaviour, IPoolable
     /// <summary>
     /// 검기를 발사 위치로 되돌리고 이번 공격의 목표를 설정한다.
     /// </summary>
-    public void InitSlash(RectTransform targetRT, double damage)
+    public void InitSlash(RectTransform targetRT)
     {
         _rect.anchoredPosition = _startPosition;
         _targetRT = targetRT;
         _targetYOffset = Random.Range(-_targetYOffsetRange, _targetYOffsetRange);
-        _damage = damage;
     }
 
 

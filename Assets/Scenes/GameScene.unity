@@ -1701,8 +1701,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: 140}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: 100, y: 120}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0, y: 1}
 --- !u!95 &366966645
 Animator:
@@ -9000,6 +9000,9 @@ MonoBehaviour:
   _basicAttackSlash_Prefab: {fileID: 8469095013963455441, guid: 2d2c2fa316005d646a72eec96dfee02d, type: 3}
   _basicAttackSlashParent: {fileID: 366966644}
   _basicAttackSlashPoolSize: 12
+  _basicAttackImpact_Prefab: {fileID: -456219982300945736, guid: 773a81dc02421514eb65049cdc9278d6, type: 3}
+  _basicAttackImpactParent: {fileID: 1345990886}
+  _basicAttackImpactPoolSize: 16
 --- !u!4 &1627860790
 Transform:
   m_ObjectHideFlags: 0
