@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
-using DG.Tweening;
 
 public class GameView : MonoBehaviour
 {

@@ -20,7 +20,7 @@ public class DamageText : MonoBehaviour, IPoolable
         RectTransform parent = (RectTransform)rt.parent;
 
         float ceiling = parent.InverseTransformPoint(healthBarBottom).y - parent.rect.center.y - rt.rect.height * 0.6f - 16f;
-        float startY = Mathf.Min(Random.Range(140f, 200f), ceiling - 45f);
+        float startY = Mathf.Min(Random.Range(220f, 260f), ceiling - 45f);
         float endY = Mathf.Min(startY + Random.Range(155f, 205f), ceiling);
         float startX = Random.Range(-110f, 110f);
         float endX = startX + Random.Range(-90f, 90f);
