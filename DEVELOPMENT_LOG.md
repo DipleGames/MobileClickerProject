@@ -1,19 +1,18 @@
-# 개발 변경 기록
+﻿# 개발 변경 기록
 
-## 2026-11-27 Android 화면 비율 및 안전 영역 대응
+## 2026-11-27 전투 화면 개선
 
-**목적**  
-Android 휴대폰, 태블릿, 폴더블에서 세로형 전투 화면과 HUD를 유지하고, Unity 에디터에서 기기별 화면을 확인한다.
+- **피해 숫자** (`DamageText.cs`, `GameView.cs`, `GameScene.unity`) — 몬스터 주변에 자연스럽게 퍼지며 체력바 아래에서 사라진다. 일반 피해는 따뜻한 흰색, 스킬 피해는 연한 하늘색으로 구분했다.
+- **골드 숫자** (`AdditionScoreText.cs`) — 금색 `+숫자`로 표시하고 상승 거리와 표시 시간을 줄여 피해량과 쉽게 구분할 수 있게 했다.
+- **스킬 슬롯** (`SkillExecutor.cs`, `GameScene.unity`) — 장착 후에도 금테를 유지한다. 쿨타임 중에는 아이콘을 어둡게 하고 남은 초와 금색 진행바를 표시한다.
+- **스킬 이펙트** (`SkillEffectPlayer.cs`, `SkillEffect.cs`, `SkillManager.cs`, `Critical Hit.asset`, `Thunder Bolt.asset`) — 기존 애니메이션을 활용해 급소 강타는 몬스터 중앙에서 짧게, 썬더 볼트는 더 높은 위치에서 재생한다. 피해 숫자가 이펙트보다 앞에 표시된다.
 
-| 변경 파일 | 수정한 부분 | 수정 근거 |
-|---|---|---|
-| [MobileHudScaler.cs](Assets/Scripts/UI/MobileHudScaler.cs) | 안전 영역과 1080 × 1920 기준 해상도로 Canvas 배율을 계산한다. 상·하단 패널에 안전 영역 기준 55%와 45%를 할당하고, 넓은 화면에서는 플레이 영역을 가운데에 배치한다. | 기존 HUD는 화면 픽셀 높이를 Canvas 좌표계에 적용했다. 화면 크기와 배율이 바뀌어도 두 패널이 안전 영역 안에서 같은 비율을 유지하도록 계산 기준을 통일했다. |
-| [GameScene.unity](Assets/Scenes/GameScene.unity) | HUDCanvas에 새 스케일러를 연결하고 상·하단 패널, 콘텐츠, 스킬, 메뉴 컨테이너의 앵커를 씬에 저장했다. | 씬이 열릴 때부터 기본 배치가 보이고 각 컨테이너가 부모 패널 크기에 맞춰 늘어나도록 했다. |
-| [HUDManager.cs](Assets/Scripts/Manager/HUDManager.cs) | 초기화 시 패널 높이와 앵커를 설정하던 코드를 제거했다. | 화면 배율과 패널 배치는 스케일러 및 씬 설정에서 관리한다. |
-| [ProjectSettings.asset](ProjectSettings/ProjectSettings.asset) | 기본 화면 방향을 세로로 설정했다. | 기존 전투·메뉴 화면의 세로 구성을 제품의 기본 방향으로 삼았다. |
+**확인** — Unity Play 모드에서 피해 숫자, 쿨타임, 두 이펙트의 재생을 확인했다. 이펙트의 화면 연출과 Android 실기기 가시성은 추가 확인이 필요하다.
 
-**검증 결과**  
-Unity 에디터에서 스크립트가 컴파일됐다. 16:9, 노치가 있는 20:9, 태블릿, 가로로 펼친 폴더블, 작은 16:9 화면에 대한 배치 계산을 확인했다. Device Simulator에서 기기별 버튼·텍스트 겹침과 Android 실기기 동작은 아직 확인하지 않았다.
+## 2026-11-27 Android 화면 비율 대응
 
-**미리보기 방법**  
-Unity에서 **Window → General → Device Simulator**를 열고 Android 기기를 선택한다. **Fit to Screen**과 **Safe Area**를 켠 뒤 **Play**로 확인한다. [Unity Device Simulator 문서](https://docs.unity3d.com/kr/6000.0/Manual/device-simulator-view.html)
+- **HUD 배치** (`MobileHudScaler.cs`, `HUDManager.cs`, `GameScene.unity`) — 1080 × 1920을 기준으로 기기별 안전 영역에 맞춰 크기를 조절한다. 상단 전투 영역과 하단 메뉴 영역은 55:45 비율로 배치한다.
+- **넓은 화면과 방향** (`MobileHudScaler.cs`, `ProjectSettings.asset`) — 태블릿과 폴더블에서 플레이 영역을 가운데에 배치한다. 기본 방향은 기존 전투 화면에 맞춰 세로로 설정했다.
+- **미리보기** — Unity의 **Window → General → Device Simulator**에서 Android 기기를 선택하고 **Fit to Screen**과 **Safe Area**를 켠 뒤 Play로 확인할 수 있다.
+
+**확인** — Unity 컴파일과 5가지 화면 조건의 배치 계산을 확인했다. 시뮬레이터의 기기별 버튼·텍스트 겹침과 Android 실기기 동작은 추가 확인이 필요하다.

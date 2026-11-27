@@ -762,6 +762,7 @@ MonoBehaviour:
   _skillBtn: {fileID: 175737392}
   _cooldown_Slider: {fileID: 113609669}
   empty_slot: {fileID: 21300000, guid: 80e49487c01df8c4ca077722c9c29eab, type: 3}
+  _equippedFrame: {fileID: 21300000, guid: e9d969e83c02488468ea66c986befca7, type: 3}
 --- !u!114 &175737392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2426,6 +2427,7 @@ MonoBehaviour:
   _skillBtn: {fileID: 461032217}
   _cooldown_Slider: {fileID: 780368808}
   empty_slot: {fileID: 21300000, guid: 80e49487c01df8c4ca077722c9c29eab, type: 3}
+  _equippedFrame: {fileID: 21300000, guid: e9d969e83c02488468ea66c986befca7, type: 3}
 --- !u!114 &461032217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4809,6 +4811,7 @@ MonoBehaviour:
   _skillBtn: {fileID: 795325533}
   _cooldown_Slider: {fileID: 586600902}
   empty_slot: {fileID: 21300000, guid: 80e49487c01df8c4ca077722c9c29eab, type: 3}
+  _equippedFrame: {fileID: 21300000, guid: e9d969e83c02488468ea66c986befca7, type: 3}
 --- !u!114 &795325533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5593,6 +5596,7 @@ MonoBehaviour:
   _skillBtn: {fileID: 933197536}
   _cooldown_Slider: {fileID: 1274365005}
   empty_slot: {fileID: 21300000, guid: 80e49487c01df8c4ca077722c9c29eab, type: 3}
+  _equippedFrame: {fileID: 21300000, guid: e9d969e83c02488468ea66c986befca7, type: 3}
 --- !u!1 &941650350
 GameObject:
   m_ObjectHideFlags: 0
@@ -6170,6 +6174,7 @@ MonoBehaviour:
   _skillBtn: {fileID: 1046400818}
   _cooldown_Slider: {fileID: 319445882}
   empty_slot: {fileID: 21300000, guid: 80e49487c01df8c4ca077722c9c29eab, type: 3}
+  _equippedFrame: {fileID: 21300000, guid: e9d969e83c02488468ea66c986befca7, type: 3}
 --- !u!114 &1046400818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9593,8 +9598,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091e6fc6f0b5daa4593c7b61253b06c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempRT: {fileID: 1345990886}
   topPanelRT: {fileID: 667740140}
+  _healthBar: {fileID: 1534525267}
 --- !u!1 &1904555535
 GameObject:
   m_ObjectHideFlags: 0
@@ -9732,6 +9737,7 @@ MonoBehaviour:
   _skillBtn: {fileID: 1917923522}
   _cooldown_Slider: {fileID: 519087756}
   empty_slot: {fileID: 21300000, guid: 80e49487c01df8c4ca077722c9c29eab, type: 3}
+  _equippedFrame: {fileID: 21300000, guid: e9d969e83c02488468ea66c986befca7, type: 3}
 --- !u!114 &1917923522
 MonoBehaviour:
   m_ObjectHideFlags: 0

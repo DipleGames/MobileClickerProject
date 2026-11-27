@@ -16,7 +16,7 @@ MonoBehaviour:
   hpMultiplier: 1.15
   bossHpMultiplier: 10
   normalMonsters:
-  - monsterAOC: {fileID: 22100000, guid: 610c87facb1d0fc41bb7c06f56ab47e0, type: 2}
+  - monsterAOC: {fileID: 22100000, guid: ac10a08b8a59420c8d16acf65f9f582e, type: 2}
     monsterID: 1
     monsterHP: 10
     isDie: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
     monsterHP: 60
     isDie: 0
   bossMonsters:
-  - monsterAOC: {fileID: 22100000, guid: 79d3bf3d6d2027d4ab90200f798be037, type: 2}
+  - monsterAOC: {fileID: 22100000, guid: a42f8f24e459497581222bcd2ebe8c75, type: 2}
     monsterID: 101
     monsterHP: 100
     isDie: 0

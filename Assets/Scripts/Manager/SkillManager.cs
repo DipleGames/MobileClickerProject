@@ -93,10 +93,12 @@ public class SkillManager : SingleTon<SkillManager>
             return;
         }
 
-        // 실제 스킬 효과 실행
-        skill.Config.skillEffect.Execute(skill);
-        SkillEffectPlayer skillEffectPlayer = PoolManager.Instance.Get<SkillEffectPlayer>();
-        skillEffectPlayer.Play(skill.Config.skillEffect.effectClip);
+        SkillEffect effect = skill.Config.skillEffect;
+        effect.Execute(skill);
+        if (effect.effectClip != null)
+        {
+            PoolManager.Instance.Get<SkillEffectPlayer>().Play(effect);
+        }
         if (skill.Config.skill_SFX != null)
         {
             AudioManager.Instance.PlaySFX(skill.Config.skill_SFX);

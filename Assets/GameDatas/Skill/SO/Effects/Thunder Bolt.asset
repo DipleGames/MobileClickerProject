@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: Thunder Bolt
   m_EditorClassIdentifier: 
   effectClip: {fileID: 7400000, guid: d83c700524fdcf04bb8490b22aa647b7, type: 2}
+  _effectSize: {x: 430, y: 430}
+  _effectOffset: {x: 0, y: 105}
+  _effectSpeed: 1.75
