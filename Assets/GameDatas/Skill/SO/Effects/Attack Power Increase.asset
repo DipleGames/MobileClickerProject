@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0582f70eb563b4393bc44dd85a2ecc, type: 3}
+  m_Name: Attack Power Increase
+  m_EditorClassIdentifier: 
+  effectClip: {fileID: 0}
+  _effectSize: {x: 500, y: 500}
+  _effectOffset: {x: 0, y: 0}
+  _effectSpeed: 1
+  _duration: 10

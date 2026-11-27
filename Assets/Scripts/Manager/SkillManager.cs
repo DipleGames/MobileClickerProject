@@ -95,6 +95,7 @@ public class SkillManager : SingleTon<SkillManager>
 
         SkillEffect effect = skill.Config.skillEffect;
         effect.Execute(skill);
+        Player.Instance.PlayerSkill(skill.Config.skillType);
         if (effect.effectClip != null)
         {
             PoolManager.Instance.Get<SkillEffectPlayer>().Play(effect);

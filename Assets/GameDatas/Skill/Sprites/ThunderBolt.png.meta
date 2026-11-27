@@ -1,11 +1,49 @@
 fileFormatVersion: 2
-guid: 6829781a5304fa648b9799c02368acb3
+guid: 8900a7b96bab44b49ab972bbe2001a15
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4760264296542251607
-    second: "\uC804\uAE30 \uBC88\uAC1C \uCDA9\uACA9\uD30C \uC2A4\uD504\uB77C\uC774\uD2B8
-      \uC2DC\uD2B8_0"
+      213: 3233510289432741681
+    second: ThunderBolt_Pixel_0
+  - first:
+      213: -6502617353807923670
+    second: ThunderBolt_Pixel_1
+  - first:
+      213: -6476989972664223210
+    second: ThunderBolt_Pixel_2
+  - first:
+      213: -6972635631862633625
+    second: ThunderBolt_Pixel_3
+  - first:
+      213: -8748643728309439919
+    second: ThunderBolt_Pixel_4
+  - first:
+      213: -4272351093751065130
+    second: ThunderBolt_Pixel_5
+  - first:
+      213: 8041712140991823427
+    second: ThunderBolt_Pixel_00
+  - first:
+      213: 2583002116315208777
+    second: ThunderBolt_Pixel_01
+  - first:
+      213: 1525975470070505566
+    second: ThunderBolt_Pixel_02
+  - first:
+      213: -3932745482848454571
+    second: ThunderBolt_Pixel_03
+  - first:
+      213: 2426044561031463680
+    second: ThunderBolt_Pixel_04
+  - first:
+      213: -488140755296926940
+    second: ThunderBolt_Pixel_05
+  - first:
+      213: -4661280143177635888
+    second: ThunderBolt_Pixel_06
+  - first:
+      213: -1836203930605306344
+    second: ThunderBolt_Pixel_07
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -38,7 +76,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -76,7 +114,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -127,353 +165,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ThunderBolt_0
+      name: ThunderBolt_Pixel_00
       rect:
         serializedVersion: 2
         x: 0
-        y: 941
-        width: 313
-        height: 313
+        y: 443
+        width: 443
+        height: 443
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 98966c0297fc2b140ba3dc017bea2c20
-      internalID: -999827317
+      spriteID: 34e73cdd596e99f60800000000000000
+      internalID: 8041712140991823427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ThunderBolt_1
+      name: ThunderBolt_Pixel_01
       rect:
         serializedVersion: 2
-        x: 313
-        y: 941
-        width: 313
-        height: 313
+        x: 443
+        y: 443
+        width: 443
+        height: 443
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 637271cd5f78c504ca3cafe0a81101ee
-      internalID: 733467533
+      spriteID: 94cdc0d4dbaa8d320800000000000000
+      internalID: 2583002116315208777
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ThunderBolt_2
+      name: ThunderBolt_Pixel_02
       rect:
         serializedVersion: 2
-        x: 626
-        y: 941
-        width: 313
-        height: 313
+        x: 886
+        y: 443
+        width: 443
+        height: 443
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 130c86750c6a0c841894ecaacef79ecc
-      internalID: -1870641964
+      spriteID: e502385ea9a5d2510800000000000000
+      internalID: 1525975470070505566
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ThunderBolt_3
+      name: ThunderBolt_Pixel_03
       rect:
         serializedVersion: 2
-        x: 939
-        y: 941
-        width: 313
-        height: 313
+        x: 1329
+        y: 443
+        width: 443
+        height: 443
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 59f80979ea608c7429c26945d85634b8
-      internalID: 1348027424
+      spriteID: 558bbc6e1d41c69c0800000000000000
+      internalID: -3932745482848454571
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ThunderBolt_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 628
-        width: 313
-        height: 313
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a55f8a1a6fabe1d45b24c18e001cb60d
-      internalID: -103175763
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ThunderBolt_5
-      rect:
-        serializedVersion: 2
-        x: 313
-        y: 628
-        width: 313
-        height: 313
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 55887731896fc6c428b758bc9cf0215f
-      internalID: -345245950
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ThunderBolt_6
-      rect:
-        serializedVersion: 2
-        x: 626
-        y: 628
-        width: 313
-        height: 313
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 93f4e77e1c7700d43b101a86352b12b3
-      internalID: -1572546712
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ThunderBolt_7
-      rect:
-        serializedVersion: 2
-        x: 939
-        y: 628
-        width: 313
-        height: 313
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ec7bcfdfe546e6940a8fc15c3f1386ea
-      internalID: 1331851643
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ThunderBolt_8
+      name: ThunderBolt_Pixel_04
       rect:
         serializedVersion: 2
         x: 0
-        y: 315
-        width: 313
-        height: 313
+        y: 0
+        width: 443
+        height: 443
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 18a1d2e481dd6404591134dbe48c3654
-      internalID: -914005894
+      spriteID: 0038c8dacaa0ba120800000000000000
+      internalID: 2426044561031463680
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ThunderBolt_9
+      name: ThunderBolt_Pixel_05
       rect:
         serializedVersion: 2
-        x: 313
-        y: 315
-        width: 313
-        height: 313
+        x: 443
+        y: 0
+        width: 443
+        height: 443
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 279f5a51b6730754fb3b0c39a7a4cd47
-      internalID: 26972560
+      spriteID: 423c220c196c939f0800000000000000
+      internalID: -488140755296926940
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ThunderBolt_10
+      name: ThunderBolt_Pixel_06
       rect:
         serializedVersion: 2
-        x: 626
-        y: 315
-        width: 313
-        height: 313
+        x: 886
+        y: 0
+        width: 443
+        height: 443
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 3161b76604d299f48a58a508d4c27271
-      internalID: 880407114
+      spriteID: 0d7a053086ecf4fb0800000000000000
+      internalID: -4661280143177635888
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ThunderBolt_11
+      name: ThunderBolt_Pixel_07
       rect:
         serializedVersion: 2
-        x: 939
-        y: 315
-        width: 313
-        height: 313
+        x: 1329
+        y: 0
+        width: 443
+        height: 443
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 28ae2313aae74134a8eb94bc98a121c9
-      internalID: 1890778683
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ThunderBolt_12
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 2
-        width: 313
-        height: 313
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ff9cc75e57dbac846876a8a69cfa94fa
-      internalID: 56383713
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ThunderBolt_13
-      rect:
-        serializedVersion: 2
-        x: 313
-        y: 2
-        width: 313
-        height: 313
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a4760e3137ecb8c46ac5870ebe0d0c86
-      internalID: 177505396
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ThunderBolt_14
-      rect:
-        serializedVersion: 2
-        x: 626
-        y: 2
-        width: 313
-        height: 313
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d1025d8cfdf5f9342a7c7a73b5827496
-      internalID: -555164793
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ThunderBolt_15
-      rect:
-        serializedVersion: 2
-        x: 939
-        y: 2
-        width: 313
-        height: 313
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 75fef9fb3990bd0488e70b32a6ae52ef
-      internalID: 1165121850
+      spriteID: 81e3815f04e7486e0800000000000000
+      internalID: -1836203930605306344
       vertices: []
       indices: 
       edges: []
@@ -482,7 +344,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 619e41fbce68c234aa8dcbd2a9abc913
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -492,22 +354,20 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ThunderBolt_0: -999827317
-      ThunderBolt_1: 733467533
-      ThunderBolt_10: 880407114
-      ThunderBolt_11: 1890778683
-      ThunderBolt_12: 56383713
-      ThunderBolt_13: 177505396
-      ThunderBolt_14: -555164793
-      ThunderBolt_15: 1165121850
-      ThunderBolt_2: -1870641964
-      ThunderBolt_3: 1348027424
-      ThunderBolt_4: -103175763
-      ThunderBolt_5: -345245950
-      ThunderBolt_6: -1572546712
-      ThunderBolt_7: 1331851643
-      ThunderBolt_8: -914005894
-      ThunderBolt_9: 26972560
+      ThunderBolt_Pixel_0: 3233510289432741681
+      ThunderBolt_Pixel_00: 8041712140991823427
+      ThunderBolt_Pixel_01: 2583002116315208777
+      ThunderBolt_Pixel_02: 1525975470070505566
+      ThunderBolt_Pixel_03: -3932745482848454571
+      ThunderBolt_Pixel_04: 2426044561031463680
+      ThunderBolt_Pixel_05: -488140755296926940
+      ThunderBolt_Pixel_06: -4661280143177635888
+      ThunderBolt_Pixel_07: -1836203930605306344
+      ThunderBolt_Pixel_1: -6502617353807923670
+      ThunderBolt_Pixel_2: -6476989972664223210
+      ThunderBolt_Pixel_3: -6972635631862633625
+      ThunderBolt_Pixel_4: -8748643728309439919
+      ThunderBolt_Pixel_5: -4272351093751065130
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -10,6 +10,8 @@ public class Player : SingleTon<Player>
 
     private static readonly int _attack1Hash = Animator.StringToHash("Player_Attack1");
     private static readonly int _attack2Hash = Animator.StringToHash("Player_Attack2");
+    private static readonly int _playerSkillAttackHash = Animator.StringToHash("Player_Skill_Attack");
+    private static readonly int _playerSkillBuffHash = Animator.StringToHash("Player_Skill_Buff");
 
     private bool _useFirstAttack = true;
 
@@ -25,6 +27,16 @@ public class Player : SingleTon<Player>
         ShowBasicAttackSlash(target);
 
         _useFirstAttack = !_useFirstAttack;
+    }
+
+    /// <summary>
+    /// 스킬 모션 실행
+    /// </summary>
+    public void PlayerSkill(SkillType skillType)
+    {
+        int skillHash = skillType == SkillType.Active ? _playerSkillAttackHash : _playerSkillBuffHash;
+
+        _anim.Play(skillHash, 0, 0f);
     }
 
     /// <summary>
