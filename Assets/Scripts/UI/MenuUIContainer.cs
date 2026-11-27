@@ -12,9 +12,12 @@ public class MenuUIContainer : MonoBehaviour
     private float _width;
     private float _height;
 
+    /// <summary>
+    /// 자식 오브젝트에서 메뉴 버튼을 수집한다.
+    /// </summary>
     void Awake()
     {
-        for(int i=0; i<transform.childCount; i++)
+        for (int i = 0; i < transform.childCount; i++)
         {
             Button menuButton = transform.GetChild(i).GetComponent<Button>();
             _menuButtonList.Add(menuButton);

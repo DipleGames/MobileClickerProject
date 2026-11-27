@@ -51,6 +51,9 @@ public class MenuView : MonoBehaviour
     }
 
     // 스킬 버튼 세팅
+    /// <summary>
+    /// 스킬 설정을 읽어 패널에 스킬 버튼을 생성한다.
+    /// </summary>
     public void SetSkillPanelUI()
     {
         foreach (SkillConfig config in SkillManager.Instance.SkillConfigs)
@@ -59,7 +62,9 @@ public class MenuView : MonoBehaviour
             SkillRuntime skill = SkillManager.Instance.GetSkill(config.skillID);
 
             if (skill == null)
+            {
                 continue;
+            }
 
             // 버튼 생성
             Button skillBtnInstance = Instantiate(skill_Btn_Prefab, skill_Panel.transform);

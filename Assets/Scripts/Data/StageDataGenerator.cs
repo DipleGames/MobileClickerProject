@@ -3,21 +3,27 @@ using UnityEngine;
 
 public class StageDataGenerator
 {
-    private StageConfig config;
+    private StageConfig _config;
 
+    /// <summary>
+    /// 스테이지 생성에 사용할 설정을 보관한다.
+    /// </summary>
     public StageDataGenerator(StageConfig config)
     {
-        this.config = config;
+        this._config = config;
     }
 
+    /// <summary>
+    /// 스테이지 번호에 맞는 몬스터와 보상 데이터를 생성한다.
+    /// </summary>
     public StageData Generate(int stage)
     {
-        bool isbossStage = stage % config.bossInterval == 0;
+        bool isbossStage = stage % _config.bossInterval == 0;
 
         // 몬스터 종류 결정
         MonsterData[] monsters = isbossStage
-            ? config.bossMonsters
-            : config.normalMonsters;
+            ? _config.bossMonsters
+            : _config.normalMonsters;
 
         // 스테이지에 따라 몬스터 선택
         int index = (stage - 1) % monsters.Length;
@@ -25,11 +31,11 @@ public class StageDataGenerator
         MonsterData baseMonster = monsters[index];
 
         // 스테이지에 따른 HP 계산
-        double hp = baseMonster.monsterHP * Math.Pow(config.hpMultiplier, stage - 1);
+        double hp = baseMonster.monsterHP * Math.Pow(_config.hpMultiplier, stage - 1);
 
         if (isbossStage)
         {
-            hp *= config.bossHpMultiplier;
+            hp *= _config.bossHpMultiplier;
         }
 
         // 새로운 몬스터 데이터 생성

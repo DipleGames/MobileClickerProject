@@ -10,8 +10,8 @@ public class AbilityManager : SingleTon<AbilityManager>
     public int AbilityLevel { get; private set; } = 1;
     public AbilityConfig AbilityConfig => _config;
 
-    private double weaponMultiplier = 1.0;
-    private double rebirthMultiplier = 1.0;
+    private double _weaponMultiplier = 1.0;
+    private double _rebirthMultiplier = 1.0;
 
     protected override void Awake()
     {
@@ -38,9 +38,12 @@ public class AbilityManager : SingleTon<AbilityManager>
     }
 
 
+    /// <summary>
+    /// 환생 배율을 설정하고 능력치 변경을 알린다.
+    /// </summary>
     public void SetRebirthMultiplier(double multiplier)
     {
-        rebirthMultiplier = multiplier;
+        _rebirthMultiplier = multiplier;
 
         OnAbilityChanged?.Invoke();
     }

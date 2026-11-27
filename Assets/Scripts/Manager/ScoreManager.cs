@@ -14,7 +14,7 @@ public class ScoreManager : SingleTon<ScoreManager>
         {
             _currentScore = value;
             HUDManager.Instance.UpdateScoreUI(_currentScore);
-            if(_currentScore > _bestScore)
+            if (_currentScore > _bestScore)
             {
                 _bestScore = _currentScore;
             }
@@ -39,9 +39,12 @@ public class ScoreManager : SingleTon<ScoreManager>
         CurrentScore += amount;
     }
 
+    /// <summary>
+    /// 골드가 충분하면 지정한 양을 차감하고 성공 여부를 반환한다.
+    /// </summary>
     public bool TrySubtractScore(double amount)
     {
-        if(CurrentScore - amount < 0)
+        if (CurrentScore - amount < 0)
         {
             return false;
         }

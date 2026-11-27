@@ -1,33 +1,46 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PoolManager : SingleTon<PoolManager>
 {
+    [FormerlySerializedAs("_damage_Text_Prefab")]
     [Header("데미지 텍스트")]
-    [SerializeField] private DamageText _damage_Text_Prefab;
-    [SerializeField] private Transform _damage_Text_Parent;
-    [SerializeField] private int _damage_Text_PoolSize = 32;
+    [SerializeField] private DamageText _damageTextPrefab;
+    [FormerlySerializedAs("_damage_Text_Parent")]
+    [SerializeField] private Transform _damageTextParent;
+    [FormerlySerializedAs("_damage_Text_PoolSize")]
+    [SerializeField] private int _damageTextPoolSize = 32;
 
+    [FormerlySerializedAs("_addition_Text_Prefab")]
     [Header("추가 스코어 텍스트")]
-    [SerializeField] private AdditionScoreText _addition_Text_Prefab;
-    [SerializeField] private Transform _additionScore_Text_Parent;
-    [SerializeField] private int _additionScore_Text_PoolSize = 32;
+    [SerializeField] private AdditionScoreText _additionTextPrefab;
+    [FormerlySerializedAs("_additionScore_Text_Parent")]
+    [SerializeField] private Transform _additionScoreTextParent;
+    [FormerlySerializedAs("_additionScore_Text_PoolSize")]
+    [SerializeField] private int _additionScoreTextPoolSize = 32;
 
+    [FormerlySerializedAs("_skillEffectPlayer_Prefab")]
     [Header("스킬 이펙트")]
-    [SerializeField] private SkillEffectPlayer _skillEffectPlayer_Prefab;
-    [SerializeField] private Transform _skillEffectPlayer_Parent;
-    [SerializeField] private int _skillEffectPlayer_PoolSize = 4;
+    [SerializeField] private SkillEffectPlayer _skillEffectPlayerPrefab;
+    [FormerlySerializedAs("_skillEffectPlayer_Parent")]
+    [SerializeField] private Transform _skillEffectPlayerParent;
+    [FormerlySerializedAs("_skillEffectPlayer_PoolSize")]
+    [SerializeField] private int _skillEffectPlayerPoolSize = 4;
 
 
     private readonly Dictionary<Type, object> _pools = new();
+    /// <summary>
+    /// 싱글턴을 초기화하고 각 프리팹의 오브젝트 풀을 등록한다.
+    /// </summary>
     protected override void Awake()
     {
         base.Awake();
 
-        Register(_damage_Text_Prefab, _damage_Text_Parent, _damage_Text_PoolSize);
-        Register(_addition_Text_Prefab, _additionScore_Text_Parent, _additionScore_Text_PoolSize);
-        Register(_skillEffectPlayer_Prefab, _skillEffectPlayer_Parent, _skillEffectPlayer_PoolSize);
+        Register(_damageTextPrefab, _damageTextParent, _damageTextPoolSize);
+        Register(_additionTextPrefab, _additionScoreTextParent, _additionScoreTextPoolSize);
+        Register(_skillEffectPlayerPrefab, _skillEffectPlayerParent, _skillEffectPlayerPoolSize);
     }
 
      private void Register<T>(T prefab, Transform parent, int poolSize) where T : MonoBehaviour, IPoolable

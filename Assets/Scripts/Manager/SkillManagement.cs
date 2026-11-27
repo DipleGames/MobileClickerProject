@@ -1,43 +1,54 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
 
 public class SkillManagement : SingleTon<SkillManagement>
 {
-    [SerializeField] private Button _skillManagement_Btn;
+    [FormerlySerializedAs("_skillManagement_Btn")]
+    [SerializeField] private Button _skillManagementBtn;
     public GameObject skillManagement_ScrollView;
-    [SerializeField] private GameObject _skillManagement_Panel;
-    [SerializeField] private GameObject _equipSkill_Btn;
+    [FormerlySerializedAs("_skillManagement_Panel")]
+    [SerializeField] private GameObject _skillManagementPanel;
+    [FormerlySerializedAs("_equipSkill_Btn")]
+    [SerializeField] private GameObject _equipSkillBtn;
     [SerializeField] private List<SkillExecutor> _skillExecutors = new();
 
     public List<SkillExecutor> SkillExecutors => _skillExecutors;
 
     // 스킬 관리 모드인가?
-    private bool isSkillManagementMode = false;
-    public bool IsSkillManagementMode => isSkillManagementMode;
+    private bool _isSkillManagementMode = false;
+    public bool IsSkillManagementMode => _isSkillManagementMode;
 
+    /// <summary>
+    /// 싱글턴을 초기화하고 스킬 관리 버튼의 클릭을 연결한다.
+    /// </summary>
     protected override void Awake()
     {
         base.Awake();
-        _skillManagement_Btn.onClick.AddListener(OnClickedSkillManagementBtn);
+        _skillManagementBtn.onClick.AddListener(OnClickedSkillManagementBtn);
     }
 
-    // 스킬 관리버튼 누르면
+    /// <summary>
+    /// 스킬 관리 모드를 전환하고 화면에 반영한다.
+    /// </summary>
     void OnClickedSkillManagementBtn()
     {
-        isSkillManagementMode = isSkillManagementMode ? false : true;
+        _isSkillManagementMode = _isSkillManagementMode ? false : true;
 
-        OnSkillManagementMode(isSkillManagementMode);
+        OnSkillManagementMode(_isSkillManagementMode);
     }
 
-    // 스킬 관리 모드 켰을때 스킬 관리 버튼의 알파값이 조정되며 스킬 실행기의 관리 버튼이 활성화된다.
+    /// <summary>
+    /// 스킬 관리 모드에 맞춰 버튼과 패널의 표시 상태를 변경한다.
+    /// </summary>
     void OnSkillManagementMode(bool isSkillManagementMode)
     {
-        Image image = _skillManagement_Btn.GetComponent<Image>();
+        Image image = _skillManagementBtn.GetComponent<Image>();
         Color color = image.color;
-        if(isSkillManagementMode)
+        if (isSkillManagementMode)
         {
             color.a = 1f;
             image.color = color;
@@ -46,13 +57,13 @@ public class SkillManagement : SingleTon<SkillManagement>
         {
             color.a = 0.2f;
             image.color = color;
-            if(skillManagement_ScrollView.activeSelf)
+            if (skillManagement_ScrollView.activeSelf)
             {
                 skillManagement_ScrollView.SetActive(false);
             }
         }
 
-        foreach(SkillExecutor skillExecutor in SkillExecutors)
+        foreach (SkillExecutor skillExecutor in SkillExecutors)
         {
             skillExecutor.transform.GetChild(1).gameObject.SetActive(isSkillManagementMode);
         }
@@ -64,9 +75,12 @@ public class SkillManagement : SingleTon<SkillManagement>
         skillManagement_ScrollView.SetActive(true);
     }
 
+    /// <summary>
+    /// 지정한 슬롯에 장착할 수 있는 해금 스킬 버튼을 구성한다.
+    /// </summary>
     public void SetSkillManagementPanel(int index)
     {
-        foreach (Transform child in _skillManagement_Panel.transform)
+        foreach (Transform child in _skillManagementPanel.transform)
         {
             Destroy(child.gameObject);
         }
@@ -74,10 +88,12 @@ public class SkillManagement : SingleTon<SkillManagement>
         foreach (var skill in SkillManager.Instance.Skiils)
         {
             if (!skill.Value.Data.isUnlocked)
+            {
                 continue;
+            }
 
             // 먼저 버튼 생성
-            GameObject obj = Instantiate(_equipSkill_Btn, _skillManagement_Panel.transform);
+            GameObject obj = Instantiate(_equipSkillBtn, _skillManagementPanel.transform);
 
             // 생성된 버튼에 데이터 설정
             obj.transform.GetChild(0).GetComponent<Image>().sprite = skill.Value.Config.skillIcon;
@@ -111,10 +127,15 @@ public class SkillManagement : SingleTon<SkillManagement>
         return equippedIDs;
     }
 
+    /// <summary>
+    /// 저장된 스킬 ID를 읽어 각 슬롯의 장착 상태를 복원한다.
+    /// </summary>
     public void LoadEquippedSkills(int[] equippedIDs)
     {
         if (equippedIDs == null)
+        {
             return;
+        }
 
         int count = Mathf.Min(equippedIDs.Length, _skillExecutors.Count);
 

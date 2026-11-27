@@ -18,9 +18,15 @@ public class ResponsiveGridLayout : MonoBehaviour
         UpdateCellSize();
     }
 
+    /// <summary>
+    /// 컨테이너 크기가 달라지면 그리드의 셀 크기를 다시 계산한다.
+    /// </summary>
     private void OnRectTransformDimensionsChange()
     {
-        if (_grid == null || _rect == null) return;
+        if (_grid == null || _rect == null)
+        {
+            return;
+        }
 
         UpdateCellSize();
     }

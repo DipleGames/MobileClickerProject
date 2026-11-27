@@ -20,10 +20,15 @@ public class SkillBtn : MonoBehaviour
         _skill = skill;
     }
 
+    /// <summary>
+    /// 스킬 해금을 시도하고 버튼 표시를 갱신한다.
+    /// </summary>
     public void OnClickedSkillBtn()
     {
         if (_skill == null)
+        {
             return;
+        }
 
         if (!_skill.Data.isUnlocked)
         {
