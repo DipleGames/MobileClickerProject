@@ -8,7 +8,10 @@ public class AdditionScoreText : MonoBehaviour, IPoolable
 
     private Sequence _sequence;
 
-    public void SetText(double amount, RectTransform tempRT)
+    /// <summary>
+    /// 전투 영역에 골드 획득량을 금색으로 표시하고 사라지면 풀에 반환한다.
+    /// </summary>
+    public void SetText(double amount)
     {
         _sequence?.Kill();
 
@@ -23,22 +26,20 @@ public class AdditionScoreText : MonoBehaviour, IPoolable
         rt.rotation = Quaternion.identity;
         rt.localScale = Vector3.one * 0.4f;
 
-        float randomX = Random.Range(-60f, 60f);
-
-        Vector2 startPos = tempRT.anchoredPosition + new Vector2(randomX, -150f);
+        Vector2 startPos = new Vector2(Random.Range(-170f, -65f), -65f);
         rt.anchoredPosition = startPos;
 
         _sequence = DOTween.Sequence();
 
         // 1. 등장 순간 크게 팝업
-        _sequence.Append(rt.DOScale(1.4f, 0.2f).SetEase(Ease.OutBack));
+        _sequence.Append(rt.DOScale(1.2f, 0.15f).SetEase(Ease.OutBack));
 
         // 2. 원래 크기로 살짝 축소
-        _sequence.Append(rt.DOScale(1f, 0.15f).SetEase(Ease.OutQuad));
+        _sequence.Append(rt.DOScale(1f, 0.1f).SetEase(Ease.OutQuad));
 
         // 3. 위로 떠오르면서 사라짐
-        _sequence.Append(rt.DOAnchorPosY(startPos.y + 180f, 0.8f).SetEase(Ease.OutQuad));
-        _sequence.Join(cg.DOFade(0f, 0.8f));
+        _sequence.Append(rt.DOAnchorPosY(startPos.y + 105f, 0.55f).SetEase(Ease.OutQuad));
+        _sequence.Join(cg.DOFade(0f, 0.55f));
 
         _sequence.OnComplete(() => PoolManager.Instance.Return<AdditionScoreText>(this));
     }

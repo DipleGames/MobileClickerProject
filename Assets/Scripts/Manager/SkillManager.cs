@@ -12,6 +12,9 @@ public class SkillManager : SingleTon<SkillManager>
     public Dictionary<int, SkillRuntime> Skiils => _skills;
 
 
+    /// <summary>
+    /// 설정과 저장 데이터를 읽어 스킬의 런타임 상태를 초기화한다.
+    /// </summary>
     public void InitializeSkills(List<SkillData> savedSkillDatas)
     {
         _skills.Clear();
@@ -29,10 +32,14 @@ public class SkillManager : SingleTon<SkillManager>
         foreach (SkillConfig config in _skillConfigs)
         {
             if (config == null)
+            {
                 continue;
+            }
 
             if (_skills.ContainsKey(config.skillID))
+            {
                 continue;
+            }
 
             SkillData data;
 
@@ -66,39 +73,55 @@ public class SkillManager : SingleTon<SkillManager>
         }
     }
 
-    // 스킬 사용 메서드
+    /// <summary>
+    /// 사용 가능한 스킬을 실행하고 이펙트와 사운드를 재생한다.
+    /// </summary>
     public void UseSkill(int skillID)
     {
         if (!_skills.TryGetValue(skillID, out SkillRuntime skill))
+        {
             return;
+        }
         
         if (skill.Config.skillEffect == null)
+        {
             return;
+        }
 
         if (!skill.TryUse())
+        {
             return;
+        }
 
-        // 실제 스킬 효과 실행
-        skill.Config.skillEffect.Execute(skill);
-        SkillEffectPlayer skillEffectPlayer = PoolManager.Instance.Get<SkillEffectPlayer>();
-        skillEffectPlayer.Play(skill.Config.skillEffect.effectClip);
-        if(skill.Config.skill_SFX != null)
+        SkillEffect effect = skill.Config.skillEffect;
+        effect.Execute(skill);
+        if (effect.effectClip != null)
+        {
+            PoolManager.Instance.Get<SkillEffectPlayer>().Play(effect);
+        }
+        if (skill.Config.skill_SFX != null)
         {
             AudioManager.Instance.PlaySFX(skill.Config.skill_SFX);
         }
         Debug.Log($"{skill.Config.skillName} 사용!");
     }
 
-    // 스킬 해금 시도 메서드
+    /// <summary>
+    /// 조건을 충족하면 골드를 차감하고 스킬을 해금한다.
+    /// </summary>
     public bool TryUnlockSkill(int skillID)
     {
         SkillRuntime skill = GetSkill(skillID);
 
         if (skill == null)
+        {
             return false;
+        }
 
         if (skill.Data.isUnlocked)
+        {
             return false;
+        }
 
         SkillUnlockCondition condition = skill.Config.unlockCondition;
 
@@ -108,7 +131,9 @@ public class SkillManager : SingleTon<SkillManager>
         }
 
         if (!ScoreManager.Instance.TrySubtractScore(condition.requiredGold))
-        return false;
+        {
+            return false;
+        }
 
         skill.Data.isUnlocked = true;
 

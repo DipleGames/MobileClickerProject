@@ -22,10 +22,15 @@ public class SkillRuntime
         return Data.isUnlocked && RemainingCoolTime <= 0f;
     }
 
+    /// <summary>
+    /// 사용 가능한 스킬의 쿨타임을 시작하고 사용 성공 여부를 반환한다.
+    /// </summary>
     public bool TryUse()
     {
         if (!CanUse())
+        {
             return false;
+        }
 
         RemainingCoolTime = Config.skillCoolTime;
         return true;

@@ -1,0 +1,35 @@
+{
+    "friendlyName": "Samsung Galaxy S23",
+    "version": 1,
+    "screens": [
+        {
+            "width": 1080,
+            "height": 2340,
+            "dpi": 425.0,
+            "orientations": [
+                {
+                    "orientation": 1,
+                    "safeArea": {
+                        "serializedVersion": "2",
+                        "x": 0.0,
+                        "y": 0.0,
+                        "width": 1080.0,
+                        "height": 2250.0
+                    },
+                    "cutouts": [
+                        {
+                            "serializedVersion": "2",
+                            "x": 510.0,
+                            "y": 2250.0,
+                            "width": 60.0,
+                            "height": 90.0
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "systemInfo": {
+        "operatingSystem": "Android"
+    }
+}

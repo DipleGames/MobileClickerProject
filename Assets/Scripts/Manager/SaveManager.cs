@@ -45,10 +45,15 @@ public class SaveManager : SingleTon<SaveManager>
     }
 
 
+    /// <summary>
+    /// 저장 파일이 있으면 삭제한다.
+    /// </summary>
     public void DeleteSave()
     {
         if (!File.Exists(savePath))
+        {
             return;
+        }
 
         File.Delete(savePath);
 

@@ -1,95 +1,44 @@
-using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class HUDManager : SingleTon<HUDManager>
 {
-    [Header("상단 패널")]
-    [SerializeField] private RectTransform _top_Paenl;
-
-    [Header("하단 패널")]
-    [SerializeField] private RectTransform _bottom_Panel;
     [SerializeField] private RectTransform _contentUIContainer;
-    [SerializeField] private RectTransform _skillExcutorContainer;
-    [SerializeField] private RectTransform _menuUIContainer;
 
+    [FormerlySerializedAs("_score_text")]
     [Header("UI")]
-    [SerializeField] private TextMeshProUGUI _score_text;
-    [SerializeField] private TextMeshProUGUI _stage_text;
-    [SerializeField] private GameObject _boss_timer;
+    [SerializeField] private TextMeshProUGUI _scoreText;
+    [FormerlySerializedAs("_stage_text")]
+    [SerializeField] private TextMeshProUGUI _stageText;
+    [FormerlySerializedAs("_boss_timer")]
+    [SerializeField] private GameObject _bossTimer;
     public TextMeshProUGUI boss_timer_text;
 
-    protected override void Awake()
-    {
-        base.Awake();
-
-        SetBottomUILayout();
-    }
-
-    private void SetBottomUILayout()
-    {
-        _top_Paenl.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height * 0.55f);
-
-        _bottom_Panel.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height * 0.45f);
-
-        const float unit = 1f / 12f;
-
-        // 중간 (m - n)/12 영역 (n/12 ~ m/12)
-         SetRectTransform(
-            _contentUIContainer,
-            new Vector2(0f, unit * 3f),
-            new Vector2(1f, unit * 11f)
-        );
-
-        // 중간 (m - n)/12 영역 (n/12 ~ m/12)
-         SetRectTransform(
-            _skillExcutorContainer,
-            new Vector2(0f, unit * 3.5f),
-            new Vector2(1f, unit * 11f)
-        );
-
-        // 하단 영역 (0 ~ n/12)
-        SetRectTransform(
-            _menuUIContainer,
-            new Vector2(0f, 0f),
-            new Vector2(1f, unit * 3f)
-        );
-    }
-
-    private void SetRectTransform(RectTransform rectTransform, Vector2 anchorMin,Vector2 anchorMax)
-    {
-        if (rectTransform == null)
-        {
-            Debug.LogError("RectTransform이 연결되지 않았습니다.");
-            return;
-        }
-
-        rectTransform.anchorMin = anchorMin;
-        rectTransform.anchorMax = anchorMax;
-
-        // Anchor 영역에 정확히 맞도록 여백 제거
-        rectTransform.offsetMin = Vector2.zero;
-        rectTransform.offsetMax = Vector2.zero;
-    }
-
+    /// <summary>
+    /// 현재 골드를 포맷하여 HUD에 표시한다.
+    /// </summary>
     public void UpdateScoreUI(double currentScore)
     {
-        _score_text.text = $"{NumberFormatter.Format(currentScore)}";
+        _scoreText.text = $"{NumberFormatter.Format(currentScore)}";
     }
 
+    /// <summary>
+    /// 스테이지 종류에 맞춰 이름, 색상, 보스 타이머를 갱신한다.
+    /// </summary>
     public void UpdateStageUI(int currentStage)
     {
-        if(StageManager.Instance.CurrentMonster.currentMonsterData.isBoss)
+        if (StageManager.Instance.CurrentMonster.currentMonsterData.isBoss)
         {
-            _stage_text.text = $"Boss {currentStage}";
-            _stage_text.color = Color.red;
-            _boss_timer.SetActive(true);
+            _stageText.text = $"Boss {currentStage}";
+            _stageText.color = Color.red;
+            _bossTimer.SetActive(true);
         }
         else
         {
-            _stage_text.text = $"STAGE {currentStage}";
-            _stage_text.color = Color.yellow;
-            _boss_timer.SetActive(false);
+            _stageText.text = $"STAGE {currentStage}";
+            _stageText.color = Color.yellow;
+            _bossTimer.SetActive(false);
         }
     }
 
@@ -98,10 +47,10 @@ public class HUDManager : SingleTon<HUDManager>
     /// </summary>
     public void ShowContentPanelUI(int index)
     {
-        for(int i=0; i<_contentUIContainer.childCount; i++)
+        for (int i = 0; i < _contentUIContainer.childCount; i++)
         {
             bool active = i == index ? true : false;
-            if(_contentUIContainer.GetChild(i).gameObject.activeSelf) // 만약 이미 켜져있는 패널인데 또 메뉴버튼입력이 들어오면 꺼버린다.
+            if (_contentUIContainer.GetChild(i).gameObject.activeSelf) // 만약 이미 켜져있는 패널인데 또 메뉴버튼입력이 들어오면 꺼버린다.
             {
                 _contentUIContainer.GetChild(i).gameObject.SetActive(false);
                 continue;

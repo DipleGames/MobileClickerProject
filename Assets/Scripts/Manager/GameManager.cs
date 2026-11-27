@@ -79,10 +79,13 @@ public class GameManager : SingleTon<GameManager>
     }
 
 
+    /// <summary>
+    /// 스테이지를 시작하고 클리어를 기다리는 게임 진행 루틴을 실행한다.
+    /// </summary>
     IEnumerator StartGameRoutine(int stage)
     {
         Debug.Log("루틴");
-        while(true)
+        while (true)
         {
             StageManager.Instance.ChangeStage(stage);
             yield return new WaitUntil(() => StageManager.Instance.IsClear);
