@@ -50,6 +50,7 @@ public class GameManager : SingleTon<GameManager>
         _offlineReward = 0;
         _offlineElapsed = TimeSpan.Zero;
         SaveData saveData = new SaveData();
+        SaveManager.Instance.RecoverSaveFile();
         if (File.Exists(SaveManager.Instance.savePath))
         {
             string json = File.ReadAllText(SaveManager.Instance.savePath);

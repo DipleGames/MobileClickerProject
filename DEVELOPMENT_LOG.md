@@ -1,5 +1,14 @@
 ﻿# 개발 변경 기록
 
+## 2026-11-29 빌드 초기화·저장 및 모바일 프레임 설정
+
+- **목적** — 새 빌드에서 첫 실행 스킬 메뉴가 비고 모바일에서 PC와 프레임 체감이 다른 문제를 점검하고, 초기화·저장 흐름과 모바일 목표 프레임을 설정한다.
+- **초기화와 스킬 UI** ([GameManager.cs](Assets/Scripts/Manager/GameManager.cs)) — 저장 파일이 없어도 기본 저장 데이터로 진행 상태와 스킬 데이터를 초기화하고 스킬 메뉴 UI를 구성하도록 수정했다. 기본 스테이지는 1로 보정한다.
+- **저장** ([SaveManager.cs](Assets/Scripts/Manager/SaveManager.cs), [SkillBtn.cs](Assets/Scripts/Object/SkillBtn.cs)) — 게임 초기화 완료 후 앱이 백그라운드로 가거나 종료될 때 저장하며, 스킬 해금 직후에도 저장한다. Android에서 종료 콜백만으로 저장이 보장되지 않는 점을 보완했다.
+- **모바일 프레임 목표** ([GameManager.cs](Assets/Scripts/Manager/GameManager.cs)) — 모바일 플랫폼에서 `Application.targetFrameRate`를 60으로 설정하고 PC에는 적용하지 않는다. Android는 Unity 기본 목표가 30 FPS이며 모바일에서는 `vSyncCount`가 무시되는 점을 근거로 설정했다.
+- **검증 결과** — `git diff --check` 통과. Unity 컴파일, Android 빌드, 실기기 FPS 및 저장 복귀 동작은 확인하지 않았다.
+- **다음 확인** — Android에서 첫 실행 스킬 목록, 해금 후 백그라운드 복귀·재실행 시 저장 유지, 실제 FPS와 발열 상태를 확인한다.
+
 ## 2026-11-28 분노의 광클 시스템과 게이지 UI
 
 - **목적** — 빠르게 터치할수록 피해량이 증가하는 동기를 제공하고 현재 분노 상태와 피해 배율을 시각화한다.
