@@ -1,5 +1,19 @@
 ﻿# 개발 변경 기록
 
+## 2026-11-28 분노의 광클 시스템과 게이지 UI
+
+- **목적** — 빠르게 터치할수록 피해량이 증가하는 동기를 제공하고 현재 분노 상태와 피해 배율을 시각화한다.
+- **분노 로직** — [RageClickManager.cs](Assets/Scripts/Manager/RageClickManager.cs)에 게이지 0~1, 피해 배율 1~3배를 구현했다. 첫 터치는 간격 판정에서 제외한다. 기본값은 빠른 터치 기준 0.25초, 증가 0.08/회, 느린 터치 감소 0.05/회, 지속 감소 0.1/초이며 Inspector에서 조정한다. 지속 감소는 빠른 터치 중에도 적용된다.
+- **피해 연결** — 사용자가 수정한 [ClickHandler.cs](Assets/Scripts/Core/ClickHandler.cs)와 [DamageCalcurator.cs](Assets/Scripts/DamageCalcurator.cs)를 확인했다. 피해 계산에서 분노 배율을 곱하며 현재 터치의 게이지 갱신 전에 피해를 계산한다. 사용자는 피해가 잘 반영되는 것으로 확인했다.
+- **씬과 View** — [RageClickView.cs](Assets/Scripts/View/RageClickView.cs)와 [GameScene.unity](Assets/Scenes/GameScene.unity)에 UI를 구성했다. 최종 구조는 `ViewManager/RageClickView`가 `Top_Panel/RageGauge_Panel` 하위 UI를 Inspector 참조로 연결하는 방식이다. 초기 실행 시 생성 방식은 제거했고 [GameView.cs](Assets/Scripts/View/GameView.cs)는 기존 역할을 유지한다. 위치·크기는 씬에서 직접 편집한다.
+- **최종 배치** — 탑패널 왼쪽의 세로 중앙에 배치했다. 왼쪽 가장자리에서 중심까지 68, 패널 88×540, 막대 36×352이며 아래에서 위로 차오른다. 기존 `MobileHudScaler`의 안전 영역을 따른다. Slider 상호작용·내비게이션과 이미지·텍스트 Raycast Target을 꺼서 공격 입력을 가리지 않는다.
+- **표시 변경 근거** — 배율과 불꽃 색상 강조를 표시한다. 최대치 직후 감소하며 `MAX` 글자가 반복 점멸해 산만하다는 피드백에 따라 해당 표시 로직과 코드 필드를 제거했다. 씬에는 빈 `RageState_Text`와 이전 직렬화 데이터가 남아 있으나 갱신하지 않는다.
+- **에셋** — 내장 imagegen으로 투명 배경 픽셀풍 [불꽃 이미지](Assets/Resources/UI/RageClick/rage_flame.png)를 생성하고 [생성 프롬프트](Assets/Resources/UI/RageClick/rage_flame.prompt.txt)를 보관했다. 최종 UI는 씬에서 스프라이트를 직접 참조한다.
+- **개발 규칙** — [AGENTS.md](AGENTS.md)에 추가·수정하는 필드 선언 끝에 `//`로 역할을 설명하는 규칙을 추가하고 분노 매니저에도 적용했다.
+- **검증 결과** — Unity 프로젝트 참조를 사용하는 외부 C# 컴파일 오류 없음. 신규 씬 오브젝트 ID 중복·참조 누락을 검사했고 왼쪽 재배치 시 관련 RectTransform만 변경했음을 확인했다. Unity 에디터 Play 검증은 수행하지 않았다.
+- **미검증 범위와 다음 확인** — 에디터 씬 재로드 후 참조·글꼴·배치·Play 동작, Device Simulator의 16:9·19.5:9·태블릿·안전 영역, Android 실기기 가독성·터치·밸런스를 확인한다. 감소 관련 주석과 실제 지속 감소 동작의 차이, Inspector 시작 게이지의 초기 범위 제한도 후속 검토 사항이다.
+- **Git** — `dev_Codex`에서 작업했고 커밋·푸시는 하지 않았다. 세션 이전 오프라인 보상·폰트 등의 변경은 보존했다.
+
 ## 2026-11-27 전투 화면 개선
 
 - **피해 숫자** (`DamageText.cs`, `GameView.cs`, `GameScene.unity`) — 몬스터 주변에 자연스럽게 퍼지며 체력바 아래에서 사라진다. 일반 피해는 따뜻한 흰색, 스킬 피해는 연한 하늘색으로 구분했다.

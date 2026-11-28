@@ -1,0 +1,4 @@
+Tool: built-in image_gen.imagegen
+Transparent background: true
+Prompt:
+Use case: stylized-concept. Asset type: Unity mobile pixel fantasy RPG HUD sprite. Create ONE standalone rage flame emblem, glowing orange and golden yellow flame with deep crimson outline and dark iron small base, crisp deliberate pixel art, straight front view, visually legible at 56 pixels. Centered square composition, emblem fills canvas with a small transparent margin. Actual transparent background. No lettering, no text, no surrounding UI, no shadow outside emblem. Save as a usable game UI asset.
