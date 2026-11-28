@@ -91,6 +91,9 @@ public class GameManager : SingleTon<GameManager>
         // 드랍확률 레벨 적용
         DropManager.Instance.SetDropLevel(saveData.currentDropLevel);
 
+        // 정령 공격력, 공격속도 레벨 적용
+        SpiritManager.Instance.SetSpiritUpgradeLevel(saveData.currentSpritAttackPowerLevel, saveData.currentSpritAttackIntervalLevel);
+
         // 스킬 상태 불러오기
         SkillManager.Instance.InitializeSkills(saveData.skillDatas);
 

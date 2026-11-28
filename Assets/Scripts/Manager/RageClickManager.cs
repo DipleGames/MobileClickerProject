@@ -6,7 +6,6 @@ public class RageClickManager : SingleTon<RageClickManager>
     [SerializeField, Min(0f)] private float _rageGauge; // 현재 분노 게이지 (0~1)
     [SerializeField, Min(0.01f)] private float _fastClickInterval = 0.25f; // 빠른 터치로 판정할 최대 간격 (초)
     [SerializeField, Min(0f)] private float _gaugeIncreasePerFastClick = 0.08f; // 빠른 터치 1회당 게이지 증가량
-    [SerializeField, Min(0f)] private float _gaugeDecreasePerSlowClick = 0.05f; // 느린 터치 1회당 게이지 감소량
     [SerializeField, Min(0f)] private float _gaugeDecayPerSecond = 0.1f; // 입력이 없을 때 초당 게이지 감소량
 
     private float _lastClickTime; // 직전 터치가 발생한 게임 시간
@@ -35,10 +34,6 @@ public class RageClickManager : SingleTon<RageClickManager>
             if (elapsed <= _fastClickInterval)
             {
                 _rageGauge += _gaugeIncreasePerFastClick;
-            }
-            else
-            {
-                _rageGauge -= _gaugeDecreasePerSlowClick;
             }
         }
 

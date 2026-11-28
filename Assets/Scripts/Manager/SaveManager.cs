@@ -176,6 +176,8 @@ public class SaveManager : SingleTon<SaveManager>
             currentAttackLevel = AttackManager.Instance.AttackLevel,
             currentAbilityLevel = AbilityManager.Instance.AbilityLevel,
             currentDropLevel = DropManager.Instance.DropLevel,
+            currentSpritAttackPowerLevel = SpiritManager.Instance.SpiritAttackPowerLevel,
+            currentSpritAttackIntervalLevel = SpiritManager.Instance.SpiritAttackIntervalLevel,
             lastSaveTime = DateTime.UtcNow.ToString("O"),
             skillDatas = SkillManager.Instance.GetSaveSkillDatas(),
             equippedSkillIDs = SkillManagement.Instance.GetEquippedSkillIDs()

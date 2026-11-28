@@ -7,6 +7,7 @@ public class Player : SingleTon<Player>
 {
     [SerializeField] private Animator _anim;
     [SerializeField] private GameObject _slash;
+    public Spirit spirit;
 
     private static readonly int _attack1Hash = Animator.StringToHash("Player_Attack1");
     private static readonly int _attack2Hash = Animator.StringToHash("Player_Attack2");
