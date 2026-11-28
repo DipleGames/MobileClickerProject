@@ -21,10 +21,20 @@ public class MenuView : MonoBehaviour
     public TextMeshProUGUI currentDropProb_Text;
     public TextMeshProUGUI DropLevelUpgradeCost_Text;
 
-
     [Header("스킬 관련")]
     public GameObject skill_Panel;
     public Button skill_Btn_Prefab;
+
+    [Header("정령 공격력 업데이트 관련")]
+    public TextMeshProUGUI SpiritAttackPower_Text;
+    public TextMeshProUGUI SpiritAttackPowerCost_Text; // 정령 공격력 강화 비용을 표시한다.
+
+    [Header("정령 공격력 업데이트 관련")]
+    public TextMeshProUGUI SpiritAttackInterval_Text;
+    public TextMeshProUGUI SpiritAttackIntervalCost_Text; // 정령 공격 간격 강화 비용을 표시한다.
+
+
+    
 
     // 공격력 업그레이드 시 UI변경
     public void UpdateAttackLevelUpgradeUI()
@@ -84,6 +94,30 @@ public class MenuView : MonoBehaviour
 
             skillBtn.unlockCondition_text.text = $"스테이지 {skill.Config.unlockCondition.requiredStage}에서 잠금 해제";
             skillBtn.lockOverlay.SetActive(!skill.Data.isUnlocked);
+        }
+    }
+
+    /// <summary>
+    /// 정령 공격력과 다음 강화 비용을 축약 형식으로 표시한다.
+    /// </summary>
+    public void UpdateSpiritAttackPowerLevelUpgradeUI()
+    {
+        SpiritAttackPower_Text.text = NumberFormatter.Format(SpiritManager.Instance.CurrentSpiritAttackPower);
+        SpiritAttackPowerCost_Text.text = NumberFormatter.Format(SpiritManager.Instance.SpiritAttackPowerUpgradeCost);
+    }
+
+    /// <summary>
+    /// 정령 공격 간격과 강화 비용 또는 최대 강화 상태를 표시한다.
+    /// </summary>
+    public void UpdateSpiritAttackIntervalLevelUpgradeUI()
+    {
+        SpiritAttackInterval_Text.text = $"{SpiritManager.Instance.CurrentSpiritAttackInterval:F1}";
+        bool isMax = SpiritManager.Instance.IsSpiritAttackIntervalMax;
+        SpiritAttackIntervalCost_Text.text = isMax ? "MAX" : NumberFormatter.Format(SpiritManager.Instance.SpiritAttackIntervalUpgradeCost);
+        Button upgradeButton = SpiritAttackIntervalCost_Text.GetComponentInParent<Button>();
+        if (upgradeButton != null)
+        {
+            upgradeButton.interactable = !isMax;
         }
     }
 }

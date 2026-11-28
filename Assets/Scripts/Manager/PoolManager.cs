@@ -30,6 +30,11 @@ public class PoolManager : SingleTon<PoolManager>
     [SerializeField] private Transform _basicAttackImpactParent;
     [SerializeField] private int _basicAttackImpactPoolSize = 16;
 
+    [Header("정령 투사체")]
+    [SerializeField] private SpiritProjectile _spiritProjectilePrefab; // 정령 투사체 풀에서 사용할 프리팹이다.
+    [SerializeField] private Transform _spiritProjectileParent; // 정령 투사체를 생성할 정령 오브젝트다.
+    [SerializeField] private int _spiritProjectilePoolSize = 4; // 미리 생성할 정령 투사체 수다.
+
 
     private readonly Dictionary<Type, object> _pools = new();
     /// <summary>
@@ -44,10 +49,20 @@ public class PoolManager : SingleTon<PoolManager>
         Register(_skillEffectPlayerPrefab, _skillEffectPlayerParent, _skillEffectPlayerPoolSize);
         Register(_basicAttackSlash_Prefab, _basicAttackSlashParent, _basicAttackSlashPoolSize);
         Register(_basicAttackImpact_Prefab, _basicAttackImpactParent, _basicAttackImpactPoolSize);
+        Register(_spiritProjectilePrefab, _spiritProjectileParent, _spiritProjectilePoolSize);
     }
 
-     private void Register<T>(T prefab, Transform parent, int poolSize) where T : MonoBehaviour, IPoolable
+    /// <summary>
+    /// 프리팹과 부모를 지정해 해당 타입의 풀을 등록한다.
+    /// </summary>
+    private void Register<T>(T prefab, Transform parent, int poolSize) where T : MonoBehaviour, IPoolable
     {
+        if (prefab == null)
+        {
+            Debug.LogError($"{typeof(T).Name} 풀의 프리팹이 지정되지 않았습니다.");
+            return;
+        }
+
         Type type = typeof(T);
 
         if (_pools.ContainsKey(type))

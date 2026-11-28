@@ -8,6 +8,8 @@ public class SaveData
     public int currentAttackLevel; // 현재 공격력 레벨
     public int currentAbilityLevel; // 현재 주문력 레벨
     public int currentDropLevel; // 현재 드롭확률 레벨
+    public int currentSpritAttackPowerLevel; // 현재 정령 공격력 레벨
+    public int currentSpritAttackIntervalLevel; // 현재 정력 공격속도 레벨
     public string lastSaveTime; // 마지막 끌떄 시간
 
     // 스킬 성장 데이터

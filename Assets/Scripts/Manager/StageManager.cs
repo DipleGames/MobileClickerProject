@@ -37,6 +37,7 @@ public class StageManager : SingleTon<StageManager>
 
         OnChangedStage += SpawnMonster;
         OnChangedStage += HUDManager.Instance.UpdateStageUI;
+        OnChangedStage += Player.Instance.spirit.SetTarget;
         _generator = new StageDataGenerator(_stageConfig);
     }
 
