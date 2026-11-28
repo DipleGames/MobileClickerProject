@@ -35,6 +35,7 @@ public class SkillBtn : MonoBehaviour
             if (SkillManager.Instance.TryUnlockSkill(_skill.Config.skillID))
             {
                 lockOverlay.SetActive(false);
+                SaveManager.Instance.SaveData();
             }
 
             return;

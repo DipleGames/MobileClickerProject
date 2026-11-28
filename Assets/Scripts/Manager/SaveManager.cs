@@ -13,9 +13,23 @@ public class SaveManager : SingleTon<SaveManager>
         savePath = Path.Combine(Application.persistentDataPath,"save.json");
     }
 
+    /// <summary>
+    /// 게임 종료 시 진행 상태를 저장한다.
+    /// </summary>
     private void OnApplicationQuit()
     {
         SaveData();
+    }
+
+    /// <summary>
+    /// 앱이 백그라운드로 전환될 때 진행 상태를 저장한다.
+    /// </summary>
+    private void OnApplicationPause(bool isPaused)
+    {
+        if (isPaused)
+        {
+            SaveData();
+        }
     }
 
     public void Save(SaveData saveData)
@@ -27,8 +41,16 @@ public class SaveManager : SingleTon<SaveManager>
         Debug.Log($"저장완료 {savePath}");
     }
 
+    /// <summary>
+    /// 초기화가 끝난 게임 상태를 저장 파일에 기록한다.
+    /// </summary>
     public void SaveData()
     {
+        if (GameManager.Instance == null || !GameManager.Instance.IsGameInitialized)
+        {
+            return;
+        }
+
         SaveData saveData = new SaveData()
         {
             currentStage = StageManager.Instance.CurrentStage,

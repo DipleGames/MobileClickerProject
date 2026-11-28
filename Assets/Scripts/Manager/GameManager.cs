@@ -10,12 +10,18 @@ public class GameManager : SingleTon<GameManager>
     [SerializeField] private OfflineRewardPopup _offlineRewardPopup; // 게임 시작 시 오프라인 보상을 표시할 팝업
     private long _offlineReward; // 이번 접속에서 지급한 오프라인 골드
     private TimeSpan _offlineElapsed; // 마지막 저장 이후 경과 시간
+    public bool IsGameInitialized { get; private set; }
 
     /// <summary>
-    /// 저장 데이터를 불러오고 게임을 시작한다.
+    /// 모바일 프레임 목표를 설정하고 저장 데이터를 불러와 게임을 시작한다.
     /// </summary>
     void Start()
     {
+        if (Application.isMobilePlatform)
+        {
+            Application.targetFrameRate = 60;
+        }
+
         SetGame();
     }
 
@@ -32,6 +38,8 @@ public class GameManager : SingleTon<GameManager>
         {
             _offlineRewardPopup.Show(_offlineReward, _offlineElapsed);
         }
+
+        IsGameInitialized = true;
     }
 
     /// <summary>
@@ -41,18 +49,13 @@ public class GameManager : SingleTon<GameManager>
     {
         _offlineReward = 0;
         _offlineElapsed = TimeSpan.Zero;
-        if (!File.Exists(SaveManager.Instance.savePath))
+        SaveData saveData = new SaveData();
+        if (File.Exists(SaveManager.Instance.savePath))
         {
-            Debug.Log("저장 파일이 없습니다.");
-            return new SaveData();
+            string json = File.ReadAllText(SaveManager.Instance.savePath);
+            saveData = JsonUtility.FromJson<SaveData>(json) ?? new SaveData();
         }
-
-        string json = File.ReadAllText(SaveManager.Instance.savePath);
-
-        SaveData saveData = JsonUtility.FromJson<SaveData>(json);
-
         SetInfo(saveData);
-
 
         // 종료 시간을 불러와 리워드 적용
         if (!string.IsNullOrEmpty(saveData.lastSaveTime) && DateTime.TryParse(saveData.lastSaveTime, null, System.Globalization.DateTimeStyles.RoundtripKind, out DateTime lastSaveTime))
@@ -70,10 +73,13 @@ public class GameManager : SingleTon<GameManager>
 
     }
 
+    /// <summary>
+    /// 저장 데이터 또는 기본값을 각 게임 매니저와 스킬 UI에 적용한다.
+    /// </summary>
     void SetInfo(SaveData saveData)
     {
         // 스테이지 적용
-        StageManager.Instance.ChangeStage(saveData.currentStage);
+        StageManager.Instance.ChangeStage(Mathf.Max(1, saveData.currentStage));
 
         // 어택 레벨 적용
         AttackManager.Instance.SetAttackLevel(saveData.currentAttackLevel);
