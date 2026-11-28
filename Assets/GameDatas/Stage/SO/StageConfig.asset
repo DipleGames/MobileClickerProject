@@ -18,42 +18,52 @@ MonoBehaviour:
   normalMonsters:
   - monsterAOC: {fileID: 22100000, guid: ac10a08b8a59420c8d16acf65f9f582e, type: 2}
     monsterID: 1
-    monsterHP: 10
+    monsterHP: 100
+    isBoss: 0
     isDie: 0
   - monsterAOC: {fileID: 22100000, guid: 748a60156eff0f84e90ae2c06824b048, type: 2}
     monsterID: 2
-    monsterHP: 20
+    monsterHP: 100
+    isBoss: 0
     isDie: 0
   - monsterAOC: {fileID: 22100000, guid: e47004a004429a840bf6d1a4f6b1d8b1, type: 2}
     monsterID: 3
-    monsterHP: 30
+    monsterHP: 100
+    isBoss: 0
     isDie: 0
   - monsterAOC: {fileID: 22100000, guid: ffcfdc57f68810f4fba7ec386826b5b9, type: 2}
     monsterID: 4
-    monsterHP: 40
+    monsterHP: 100
+    isBoss: 0
     isDie: 0
   - monsterAOC: {fileID: 22100000, guid: 30198b3256143bd41b9bac7128c9f612, type: 2}
     monsterID: 5
-    monsterHP: 50
+    monsterHP: 100
+    isBoss: 0
     isDie: 0
   - monsterAOC: {fileID: 22100000, guid: 25be76e235201b740b929a8f57348467, type: 2}
     monsterID: 6
-    monsterHP: 60
+    monsterHP: 100
+    isBoss: 0
     isDie: 0
   - monsterAOC: {fileID: 22100000, guid: 610c87facb1d0fc41bb7c06f56ab47e0, type: 2}
     monsterID: 6
-    monsterHP: 60
+    monsterHP: 100
+    isBoss: 0
     isDie: 0
   - monsterAOC: {fileID: 22100000, guid: 748a60156eff0f84e90ae2c06824b048, type: 2}
     monsterID: 6
-    monsterHP: 60
+    monsterHP: 100
+    isBoss: 0
     isDie: 0
   bossMonsters:
   - monsterAOC: {fileID: 22100000, guid: a42f8f24e459497581222bcd2ebe8c75, type: 2}
     monsterID: 101
     monsterHP: 100
+    isBoss: 0
     isDie: 0
   - monsterAOC: {fileID: 22100000, guid: 102386b4563df314aab0aaa44e85a1e4, type: 2}
     monsterID: 101
     monsterHP: 200
+    isBoss: 0
     isDie: 0

@@ -395,7 +395,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2f7e86421c0354dac2dacde8526afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _equip_Btn: {fileID: 6689484876261704931}
+  _skill:
+    _config: {fileID: 0}
+    _data:
+      skillID: 0
+      skillLevel: 1
+      isUnlocked: 0
+  _equipBtn: {fileID: 6689484876261704931}
+  currentIndex: 0
 --- !u!1 &3522456016130975733
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,8 +591,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -182, y: 35}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -85, y: 35}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8907724756717159898
 CanvasRenderer:

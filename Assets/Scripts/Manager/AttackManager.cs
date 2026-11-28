@@ -11,6 +11,7 @@ public class AttackManager : SingleTon<AttackManager>
 
     private double _weaponMultiplier = 1.0;
     private double _rebirthMultiplier = 1.0;
+    private double _buffMultiplier = 1.0; // 현재 공격력 버프 배율
 
     protected override void Awake()
     {
@@ -23,12 +24,21 @@ public class AttackManager : SingleTon<AttackManager>
         get
         {
             double upgradePower = _config.baseAttack * Math.Pow(_config.attackMultiplier, AttackLevel - 1);
-            _currentAttackPower = upgradePower * _weaponMultiplier * _rebirthMultiplier;
+            _currentAttackPower = upgradePower * _weaponMultiplier * _rebirthMultiplier * _buffMultiplier;
             return _currentAttackPower;
         }
     }
 
     public event Action OnAttackChanged;
+
+    /// <summary>
+    /// 공격력 버프 배율을 변경하고 공격력 UI를 갱신한다.
+    /// </summary>
+    public void SetBuffMultiplier(double multiplier)
+    {
+        _buffMultiplier = multiplier;
+        OnAttackChanged?.Invoke();
+    }
 
     public void UpgradeAttack()
     {

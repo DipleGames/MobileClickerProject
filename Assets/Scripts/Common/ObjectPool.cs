@@ -21,9 +21,12 @@ public class ObjectPool<T> where T : Component, IPoolable
         }
     }
 
+    /// <summary>
+    /// 풀에서 객체를 꺼내고, 부족하면 새로 생성해 활성화한다.
+    /// </summary>
     public T Get()
     {
-        T obj = _pool.Dequeue();
+        T obj = _pool.Count > 0 ? _pool.Dequeue() : Object.Instantiate(_prefab, _parent);
         obj.OnSpawnFromPool();
         return obj;
     }

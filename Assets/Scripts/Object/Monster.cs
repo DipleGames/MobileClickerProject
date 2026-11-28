@@ -19,8 +19,12 @@ public class Monster : MonoBehaviour
     private RectTransform _rect;
     private Image _image;
     private Vector2 _restPosition;
+    private Vector3 _restScale;
     private Color _restColor;
     private Sequence _hitReaction;
+    private Sequence _hitFlash;
+    private Sequence _hitScale;
+    private float _nextHitAnimationTime;
 
     private static readonly int _hitHash = Animator.StringToHash("Hit");
 
@@ -32,6 +36,7 @@ public class Monster : MonoBehaviour
         _rect = (RectTransform)transform;
         _image = GetComponent<Image>();
         _restPosition = _rect.anchoredPosition;
+        _restScale = _rect.localScale;
         _restColor = _image.color;
     }
 
@@ -116,24 +121,38 @@ public class Monster : MonoBehaviour
     }
 
     /// <summary>
-    /// 피격 자세와 짧은 밀림을 재생하고 원래 자세로 부드럽게 복귀시킨다.
+    /// 피격 애니메이션은 일정 간격으로 재생하고 매 타격의 짧은 반응은 부드럽게 갱신한다.
     /// </summary>
     private void PlayHitReaction()
     {
-        if (_hitReaction != null && _hitReaction.IsActive())
+        if (Time.time >= _nextHitAnimationTime)
         {
-            return;
+            _anim.Play(_hitHash, 0, 0f);
+            _nextHitAnimationTime = Time.time + 0.12f;
         }
 
-        _anim.Play(_hitHash, 0, 0f);
-        float distance = currentMonsterData.isBoss ? 12f : 24f;
+        if (_hitReaction == null || !_hitReaction.IsActive())
+        {
+            float distance = currentMonsterData.isBoss ? 12f : 24f;
+            _hitReaction = DOTween.Sequence().SetLink(gameObject);
+            _hitReaction.Append(_rect.DOAnchorPosX(_restPosition.x + distance, 0.045f).SetEase(Ease.OutQuad));
+            _hitReaction.Append(_rect.DOAnchorPosX(_restPosition.x, 0.14f).SetEase(Ease.OutCubic));
+            _hitReaction.OnKill(() => _hitReaction = null);
+        }
+
+        _hitFlash?.Kill();
         Color hitColor = _restColor * new Color(1f, 0.68f, 0.62f, 1f);
-        _hitReaction = DOTween.Sequence().SetLink(gameObject);
-        _hitReaction.Append(_rect.DOAnchorPosX(_restPosition.x + distance, 0.045f).SetEase(Ease.OutQuad));
-        _hitReaction.Join(_image.DOColor(hitColor, 0.045f));
-        _hitReaction.Append(_rect.DOAnchorPosX(_restPosition.x, 0.14f).SetEase(Ease.OutCubic));
-        _hitReaction.Join(_image.DOColor(_restColor, 0.12f));
-        _hitReaction.OnKill(() => _hitReaction = null);
+        _hitFlash = DOTween.Sequence().SetLink(gameObject);
+        _hitFlash.Append(_image.DOColor(hitColor, 0.025f));
+        _hitFlash.Append(_image.DOColor(_restColor, 0.09f));
+        _hitFlash.OnKill(() => _hitFlash = null);
+
+        _hitScale?.Kill();
+        float scaleMultiplier = currentMonsterData.isBoss ? 1.025f : 1.04f;
+        _hitScale = DOTween.Sequence().SetLink(gameObject);
+        _hitScale.Append(_rect.DOScale(_restScale * scaleMultiplier, 0.03f).SetEase(Ease.OutQuad));
+        _hitScale.Append(_rect.DOScale(_restScale, 0.09f).SetEase(Ease.OutCubic));
+        _hitScale.OnKill(() => _hitScale = null);
     }
 
     /// <summary>
@@ -142,7 +161,11 @@ public class Monster : MonoBehaviour
     private void ResetHitReaction()
     {
         _hitReaction?.Kill();
+        _hitFlash?.Kill();
+        _hitScale?.Kill();
         _rect.anchoredPosition = _restPosition;
+        _rect.localScale = _restScale;
         _image.color = _restColor;
+        _nextHitAnimationTime = 0f;
     }
 }

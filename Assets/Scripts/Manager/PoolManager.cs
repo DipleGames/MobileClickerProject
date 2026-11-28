@@ -5,29 +5,30 @@ using UnityEngine.Serialization;
 
 public class PoolManager : SingleTon<PoolManager>
 {
-    [FormerlySerializedAs("_damage_Text_Prefab")]
     [Header("데미지 텍스트")]
     [SerializeField] private DamageText _damageTextPrefab;
-    [FormerlySerializedAs("_damage_Text_Parent")]
     [SerializeField] private Transform _damageTextParent;
-    [FormerlySerializedAs("_damage_Text_PoolSize")]
     [SerializeField] private int _damageTextPoolSize = 32;
 
-    [FormerlySerializedAs("_addition_Text_Prefab")]
     [Header("추가 스코어 텍스트")]
     [SerializeField] private AdditionScoreText _additionTextPrefab;
-    [FormerlySerializedAs("_additionScore_Text_Parent")]
     [SerializeField] private Transform _additionScoreTextParent;
-    [FormerlySerializedAs("_additionScore_Text_PoolSize")]
     [SerializeField] private int _additionScoreTextPoolSize = 32;
 
-    [FormerlySerializedAs("_skillEffectPlayer_Prefab")]
     [Header("스킬 이펙트")]
     [SerializeField] private SkillEffectPlayer _skillEffectPlayerPrefab;
-    [FormerlySerializedAs("_skillEffectPlayer_Parent")]
     [SerializeField] private Transform _skillEffectPlayerParent;
-    [FormerlySerializedAs("_skillEffectPlayer_PoolSize")]
     [SerializeField] private int _skillEffectPlayerPoolSize = 4;
+
+    [Header("기본공격 슬래쉬")]
+    [SerializeField] private BasicAttackSlash _basicAttackSlash_Prefab;
+    [SerializeField] private Transform _basicAttackSlashParent;
+    [SerializeField] private int _basicAttackSlashPoolSize = 16;
+
+    [Header("기본공격 임팩트")]
+    [SerializeField] private BasicAttackImpact _basicAttackImpact_Prefab;
+    [SerializeField] private Transform _basicAttackImpactParent;
+    [SerializeField] private int _basicAttackImpactPoolSize = 16;
 
 
     private readonly Dictionary<Type, object> _pools = new();
@@ -41,6 +42,8 @@ public class PoolManager : SingleTon<PoolManager>
         Register(_damageTextPrefab, _damageTextParent, _damageTextPoolSize);
         Register(_additionTextPrefab, _additionScoreTextParent, _additionScoreTextPoolSize);
         Register(_skillEffectPlayerPrefab, _skillEffectPlayerParent, _skillEffectPlayerPoolSize);
+        Register(_basicAttackSlash_Prefab, _basicAttackSlashParent, _basicAttackSlashPoolSize);
+        Register(_basicAttackImpact_Prefab, _basicAttackImpactParent, _basicAttackImpactPoolSize);
     }
 
      private void Register<T>(T prefab, Transform parent, int poolSize) where T : MonoBehaviour, IPoolable

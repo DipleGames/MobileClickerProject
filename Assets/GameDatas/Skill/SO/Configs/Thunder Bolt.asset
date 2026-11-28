@@ -24,3 +24,4 @@ MonoBehaviour:
     requiredStage: 50
     requiredGold: 0
   skillEffect: {fileID: 11400000, guid: fc80d708db660a34195583041f721897, type: 2}
+  skill_SFX: {fileID: 0}

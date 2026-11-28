@@ -2,7 +2,7 @@ using UnityEngine;
 
 public enum SkillType
 {
-    Damage,
+    Active,
     Buff
 }
 
@@ -16,8 +16,10 @@ public class SkillConfig : ScriptableObject
     [TextArea(1,3)]
     public string skillDesc; // 스킬 설명
 
-    public float skillMultiplier = 1.5f; // 스킬 주문력 배율
     public float skillCoolTime = 5f; // 스킬 쿨타임
+
+    [Header("액티브 스킬 주문력 계수")]
+    public float skillMultiplier = 1.5f; // 스킬 주문력 계수
 
     [Header("스킬 해금 조건")]
     public SkillUnlockCondition unlockCondition;
